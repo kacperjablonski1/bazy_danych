@@ -1,3 +1,5 @@
+Aby odpalic program ctrl + enter, odpala zaznaczone albo tam gdzie jest kursor.
+
 # Zadanie 4
 create table przetwory (dodatek varchar(40) default 'papryczka chilli');
 

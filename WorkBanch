@@ -1,0 +1,5 @@
+# Zadanie 4
+create table przetwory (dodatek varchar(40) default 'papryczka chilli');
+
+
+show create table izba;

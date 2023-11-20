@@ -47,7 +47,7 @@ usuwanie.
 CREATE TABLE walizka (
     id_walizki INT AUTO_INCREMENT PRIMARY KEY,
     pojemnosc INT UNSIGNED,
-    kolor ENUM('rózowy', 'czerwony', 'teczowy', 'żółty') DEFAULT 'rózowy',
+    kolor ENUM('rózowy', 'czerwony', 'teczowy', 'żółty') ,
     id_wlasciciela INT,
     FOREIGN KEY (id_wlasciciela) REFERENCES postac(id_postaci) ON DELETE CASCADE
 );

@@ -190,6 +190,7 @@ DROP TABLE izba;
 
 Wej
 
+rodzaje int
 Stworz tabele NOT NULL INT AUTOINCREMENT INT(8) VARCHAR (80)
 DODAJ KOLUMNE VARCHAR (20) NOT NULL
 DODAJ KLUCZ OBCY DO TABELI
@@ -205,3 +206,54 @@ ALTER TABLE postac CHANGE id_postaci id_postaci int;
 ALTER TABLE postac MODIFY id_postaci int; - usuniecie auto_increment
 #2 - usuniecie klucz obcy
 ALTER TABLE walizka DROP foreign key walizka_ibfk_1; 
+
+zadanie 2
+#a
+ALTER TABLE postac ADD COLUMN pesel char(11) PRIMARY KEY first;
+update postac set pesel = '98434534592' + id_postaci;
+ALTER TABLE postac ADD PRIMARY KEY (pesel);
+
+b)
+ALTER TABLE postac MODIFY  rodzaj enum('')
+INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek)  VALUES ('23423423423',5,'Gertruda Nieszczera', 'syrena', '2023-11-23',125);
+
+# % - dowolny ciag znakow, _ - dokladnie jeden znak
+SELECT nazwa FROM postac WHERE nazwa like '_r%';
+select nazwa from postac
+where nazwa like '__-__';
+select nazwa from postac where nazwa regexp '%a%';
+
+c)
+UPDATE postac set statek = 'Santa' WHERE nazwa like '%a%'
+
+Select * from statek where data_wodowania >='1901-01-01' and data_wodowania <= '2003-10-02';
+SELECT * FROM statek where data_wodowania between '1903-94-23' and '2009-12-31';
+select data_wodowania from statek;
+select year/day/month (data_wodowania) from statek;
+select * from statek where year (data_wodoowania) between 1901 and 2000;
+
+Update statek set max_ladownosc = max_ladownosc * 0.7 where year(data_wodowania) between 1701 and 2001;
+
+alter table postac add check (wiek <= 1000); - jesli teraz bysmy chcieli cos zmieic w tabeli to musi to spelniac to.
+
+zadanie 4
+
+# najpierw enum     
+ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena','waz');
+
+INSERT into postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja) VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
+b)
+create table marynarz like postac;
+
+INSERT INTO  marynarz SELECT * FROM postac WHERE id_statku IS NOT NULL;
+mozna tez
+create table marynarz3 as select * from postac where statek is not null;
+c)
+ ALTER TABLE marynarz ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
+
+zadanie 5
+a)
+UPDATE marynarz SET id_statku = NULL WHERE id_postaci IN (5,3,4,5,7);
+b)
+ DELETE FROM marynarz WHERE nazwa = 'Barbarosa';
+c)

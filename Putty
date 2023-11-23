@@ -187,3 +187,14 @@ DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
 9. Usun tabele izba.
 
 DROP TABLE izba;
+
+TOM 2
+
+zadanie 1
+
+ALTER TABLE postac DROP PRIMARY KEY - aby to to najpierw to
+#1 - usuneicie auto_increment
+ALTER TABLE postac CHANGE id_postaci id_postaci int;
+ALTER TABLE postac MODIFY id_postaci int; - usuniecie auto_increment
+#2 - usuniecie klucz obcy
+ALTER TABLE walizka DROP foreign key walizka_ibfk_1; 

@@ -257,3 +257,13 @@ UPDATE marynarz SET id_statku = NULL WHERE id_postaci IN (5,3,4,5,7);
 b)
  DELETE FROM marynarz WHERE nazwa = 'Barbarosa';
 c)
+ ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+ DELETE FROM statek WHERE max_ladownosc = 560;
+DELETE FROM statek WHERE max_ladownosc = 200;
+d)
+ ALTER TABLE marynarz DROP FOREIGN KEY marynarz_ibfk_1;
+DROP TABLE statek;
+e)
+ CREATE TABLE zwierz ( id_zwierz INT AUTO_INCREMENT PRIMARY KEY, nazwa TEXT, wiek INT );
+f)
+INSERT INTO zwierz (id_zwierz,nazwa,wiek) SELECT id_postaci,nazwa,wiek FROM  postac WHERE rodzaj IN ('waz','ptak');

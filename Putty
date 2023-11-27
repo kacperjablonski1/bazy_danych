@@ -277,28 +277,58 @@ ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena','waz');
 
 INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja) VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
 
-b)
-create table marynarz like postac;
+b) Stwórz nowa tabele na podstawie tabeli Postacie (doktadnie takie same pola), 
+nazwij ja Marynarz - wrzuc do tej tabeli wszystkie postacie które maja zdefiniowany statek
+
+CREATE TABLE marynarz LIKE postac; (nie kopiuje kluczy obcych)
 
 INSERT INTO  marynarz SELECT * FROM postac WHERE id_statku IS NOT NULL;
-mozna tez
-create table marynarz3 as select * from postac where statek is not null;
-c)
- ALTER TABLE marynarz ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
+
+2 - sposob czyli przy stworzeniu tabeli aby odrazu dodal ale tu nie kopiuje klucza glownego i obcego.
+
+CREATE TABLE marynarz3 AS SELECT * FROM postac WHERE statek IS NOT NULL;
+
+c) dostosuj odpowiednio klucze glowne i obce
+
+# My tylko klucz obcy bo mamy juz glowny skopiowany.
+
+ALTER TABLE marynarz ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
 
 zadanie 5
-a)
+
+a) wysadz wszystkich ze statku
+
 UPDATE marynarz SET id_statku = NULL WHERE id_postaci IN (5,3,4,5,7);
-b)
- DELETE FROM marynarz WHERE nazwa = 'Barbarosa';
-c)
- ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
- DELETE FROM statek WHERE max_ladownosc = 560;
+
+b) usmierc jednego wikinga
+
+DELETE FROM marynarz WHERE nazwa = 'Barbarosa';
+
+c) zniszcz wszystkie statki
+
+# Najpierw trzeba usunac klucze obce ktore sie odwoluja do tych statkow.
+
+ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+
+# Teraz usuwamy statki
+
+DELETE FROM statek WHERE max_ladownosc = 560;
 DELETE FROM statek WHERE max_ladownosc = 200;
-d)
- ALTER TABLE marynarz DROP FOREIGN KEY marynarz_ibfk_1;
+
+d) usun tabele statek
+
+# najpierw klucz
+
+ALTER TABLE marynarz DROP FOREIGN KEY marynarz_ibfk_1;
+
+# Potem tabelka.
+
 DROP TABLE statek;
-e)
- CREATE TABLE zwierz ( id_zwierz INT AUTO_INCREMENT PRIMARY KEY, nazwa TEXT, wiek INT );
-f)
+
+e) stworz tabele zwierz z polami id - klucz gtowny samo zwiekszajacy sie, nazwa - ciag znakow, wiek - liczba
+
+CREATE TABLE zwierz ( id_zwierz INT AUTO_INCREMENT PRIMARY KEY, nazwa TEXT, wiek INT );
+
+f) przekopiuj z tabeli postac wszystkie zwierzaki
+
 INSERT INTO zwierz (id_zwierz,nazwa,wiek) SELECT id_postaci,nazwa,wiek FROM  postac WHERE rodzaj IN ('waz','ptak');

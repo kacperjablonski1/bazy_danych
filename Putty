@@ -1,6 +1,7 @@
 Tom 1 
 
 Zadanie 1 
+
 1. Stwórz tabele postac z nastepujacymi polami:
 a. id_postaci kl. gtówny, liczba samozwiekszajaca sie
 b. nazwa - ciag znaków max 40
@@ -37,6 +38,7 @@ SET wiek = 88
 WHERE nazwa = 'Tesciowa';
 
 Zadanie 2 
+
 1. Stwórz tabele walizka:
 a. id_walizki - liczba samozwiekszajaca sie, klucz growny
 b. pojemnosc - liczba nieujemna
@@ -68,6 +70,7 @@ INSERT INTO walizka (pojemnosc, id_wlasciciela)
 VALUES (25, (SELECT id_postaci FROM postac WHERE nazwa = 'Tesciowa'));
 
 Zadanie 3 
+
 1. Stwórz tabele izba z polami:
 a. adres_budynku - czesc klucza gtównego
 b. nazwa_izby - czesc klucza gtównego
@@ -94,6 +97,7 @@ INSERT INTO izba (adres_budynku, nazwa_izby, metraz, kolor, wlasciciel)
 VALUES (1, 'spizarnia', 15, 'zielony', NULL);
 
 Zadanie 4 
+
 1. Stwórz tabele pretwory z polami:
 a. Id _przetworu - Klucz growny
 b. rok_produkji - typ roku, domyslnie 1654
@@ -120,6 +124,7 @@ INSERT INTO przetwory (rok_produkcji, id_wykonawcy, zawartosc, id_konsumenta)
 VALUES (2022, 1, 'bigos', 'papryczka chilli', 2);
 
 Zadanie 5
+
 1. Wstaw 5 wikingów do tabeli postaci.
 
 INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
@@ -269,7 +274,7 @@ c) ustaw warunek sprawdzajacy czy wiek postaci nie jest wiekszy od 1000
 
 ALTER TABLE postac ADD CHECK (wiek <= 1000); - jesli teraz bysmy chcieli cos zmieic w tabeli to musi to spelniac to.
 
-zadanie 4
+Zadanie 4
 
 a) Do postaci dodaj weza Loko, tylko nie wadzaj go na statek.
 
@@ -298,7 +303,7 @@ c) dostosuj odpowiednio klucze glowne i obce
 
 ALTER TABLE marynarz ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
 
-zadanie 5
+Zadanie 5
 
 a) wysadz wszystkich ze statku
 

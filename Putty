@@ -198,50 +198,85 @@ ALTER TABLE ADD FOREIGN
 
 TOM 2
 
-zadanie 1
+Zadanie 1
+
+a) usmierc dwóch najstarszych wikingów, ale to nie moze byc Bjorn (DELETE z WHERE)
+
+DELETE FROM postac
+WHERE rodzaj = 'wiking' AND nazwa NOT LIKE 'Bjorn'
+ORDER BY wiek DESC
+LIMIT 2;
+
+b) usun klucz glówny z tabeli postac - moze byc potrzebnych kilka komend (np. odtaczenie kluczy
+obcych)
 
 ALTER TABLE postac DROP PRIMARY KEY - aby to to najpierw to
-#1 - usuneicie auto_increment
+#1 - usuneicie auto_increment - jesli jest 
 ALTER TABLE postac CHANGE id_postaci id_postaci int;
 ALTER TABLE postac MODIFY id_postaci int; - usuniecie auto_increment
-#2 - usuniecie klucz obcy
-ALTER TABLE walizka DROP foreign key walizka_ibfk_1; 
 
-zadanie 2
-#a
-ALTER TABLE postac ADD COLUMN pesel char(11) PRIMARY KEY first;
-update postac set pesel = '98434534592' + id_postaci;
+#2 - usuniecie kluczy obcy
+
+ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1; 
+
+Zadanie 2
+
+a) do tabeli postac dodaj pole pesel stadajace sie z 11 znaków i ustaw to pole na klucz glowny
+
+ALTER TABLE postac ADD COLUMN pesel char(11) PRIMARY KEY first; (żeby to zadziałało, to trzeba ustawić coś w tabeli)
+
+UPTADE postac SET pesel = '98434534592' + id_postaci;
 ALTER TABLE postac ADD PRIMARY KEY (pesel);
 
-b)
-ALTER TABLE postac MODIFY  rodzaj enum('')
+b) w tabeli postac zmien pole rodzaj, tak, aby mozliwe byto dodanie syreny. (ENUM dodaj syrene)
+
+ALTER TABLE postac MODIFY  rodzaj enum('(Trzeba wszystko wypisac jeszcze raz + coś nowego)')
+
+c) wstaw do tabeli syrene o nazwie Gertruda Nieszczera
+
 INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek)  VALUES ('23423423423',5,'Gertruda Nieszczera', 'syrena', '2023-11-23',125);
+
+DODATEK WYSWIETLANIE 
 
 # % - dowolny ciag znakow, _ - dokladnie jeden znak
 SELECT nazwa FROM postac WHERE nazwa like '_r%';
-select nazwa from postac
-where nazwa like '__-__';
+select nazwa from postac WHERE nazwa like '__-__';
 select nazwa from postac where nazwa regexp '%a%';
 
-c)
-UPDATE postac set statek = 'Santa' WHERE nazwa like '%a%'
+Zadanie 3 
 
-Select * from statek where data_wodowania >='1901-01-01' and data_wodowania <= '2003-10-02';
-SELECT * FROM statek where data_wodowania between '1903-94-23' and '2009-12-31';
-select data_wodowania from statek;
-select year/day/month (data_wodowania) from statek;
-select * from statek where year (data_wodoowania) between 1901 and 2000;
+a) Wszystkie postacie, które maja w swojej nazwie 'a', wadi na statek Bjorna
+
+UPDATE postac SET statek = 'Czarna Perla' WHERE nazwa LIKE '%a%'
+
+b) Zmniejsz ladownosc wszystkim statkom o 30%, których data wodowania byla w XX wieku
+
+(SORTOWANIE)
+SELECT * FROM statek WHERE data_wodowania >='1901-01-01' AND data_wodowania <= '2003-10-02';
+SELECT * FROM statek WHERE data_wodowania BETWEEN '1903-94-23' AND '2009-12-31';
+SELECT data_wodowania FROM statek;
+SELECT year/day/month (data_wodowania) FROM statek;
+SELECT * FROM statek WHERE year (data_wodoowania) BETWEEN 1901 AND 2000;
+(KONIEC) 
 
 Update statek set max_ladownosc = max_ladownosc * 0.7 where year(data_wodowania) between 1701 and 2001;
 
-alter table postac add check (wiek <= 1000); - jesli teraz bysmy chcieli cos zmieic w tabeli to musi to spelniac to.
+c) ustaw warunek sprawdzajacy czy wiek postaci nie jest wiekszy od 1000
+
+ALTER TABLE postac ADD CHECK (wiek <= 1000); - jesli teraz bysmy chcieli cos zmieic w tabeli to musi to spelniac to.
 
 zadanie 4
 
-# najpierw enum     
+a) Do postaci dodaj weza Loko, tylko nie wadzaj go na statek.
+
+# najpierw enum
+
 ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena','waz');
 
-INSERT into postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja) VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
+# Teraz waz Loko
+
+INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja) VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
+
 b)
 create table marynarz like postac;
 

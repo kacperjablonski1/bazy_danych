@@ -341,3 +341,32 @@ CREATE TABLE zwierz ( id_zwierz INT AUTO_INCREMENT PRIMARY KEY, nazwa TEXT, wiek
 f) przekopiuj z tabeli postac wszystkie zwierzaki
 
 INSERT INTO zwierz (id_zwierz,nazwa,wiek) SELECT id_postaci,nazwa,wiek FROM  postac WHERE rodzaj IN ('waz','ptak');
+
+wejsc
+1)usun z tabelki cos ponizej 5 punktow
+2) dodaj kolumne
+3)zmien modyfikacje z  punktow dodaj do nich 3 punkty dla xx wieku
+
+
+
+TOM 3
+
+
+
+Zadanie 1
+a)  create table zasob  as select * from wikingowie.zasob;
+b)  select * from zasob;
+c)  SELECT * FROM zasob WHERE rodzaj = 'jedzenie';
+d)  SELECT idZasobu  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);
+d) SELECT idZasobu, ilosc  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 1); 
+d) SELECT idZasobu, ilosc  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);
+
+Zadanie 2 
+a) SELECT * FROM kreatura WHERE rodzaj NOT LIKE 'wiedzma' AND udzwig >= 50;
+a) SELECT * FROM kreatura WHERE NOT rodzaj = 'wiedzma' AND udzwig >=50;
+b) SELECT * FROM zasob WHERE waga between 2 AND 5;
+c)  SELECT * FROM kreatura WHERE nazwa = '%or%' AND udzwig between 30 AND 70;
+
+Zadanie 3 
+a) SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
+b) 

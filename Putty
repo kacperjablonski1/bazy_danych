@@ -387,3 +387,5 @@ c) SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007
 
 Zadanie 5
 a)
+b)
+c)

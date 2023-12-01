@@ -386,6 +386,9 @@ b) SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
 c) SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
 
 Zadanie 5
-a)
-b)
-c)
+a) SELECT nazwa, waga * 0.7 AS masa_netto, waga * 0.3 AS masa_odpadkow
+FROM zasob
+WHERE rodzaj = 'jedzenie';
+b) select * from zasob where rodzaj is null;
+c) SELECT DISTINCT rodzaj FROM zasob WHERE (nazwa LIKE 'Ba%' OR nazwa LIKE '%os') AND rodzaj IS NOT NULL
+ORDER BY rodzaj;

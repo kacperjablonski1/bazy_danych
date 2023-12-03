@@ -50,17 +50,35 @@ SELECT * FROM kreatura WHERE nazwa = '%or%' AND udzwig between 30 AND 70;
 ```
 
 # Zadanie 3 
-a) SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
-b) SELECT * FROM zasob order by rodzaj;
-SELECT DISTINCT rodzaj FROM kreatura;
-c) SELECT * FROM kreatura order by dataUr DESC LIMIT 5;
 
-DODATKOWE
+***1. Wyświetl zasoby, które zostały pozyskane w miesiącach lipcu i sierpniu***
+
+```sql
+SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
+```
+
+***2. Wyświetl zasoby, które mają zdefiniowany rodzaj od najlżejszego do najcięższego***
+
+```sql
+b) SELECT * FROM zasob order by rodzaj;
+```
+
+***3. Wyświetl 5 najstarszych kreatur****
+
+```sql
+c) SELECT * FROM kreatura order by dataUr DESC LIMIT 5;
+```
+
+*DODATKOWE*
+
+```sql
+SELECT DISTINCT rodzaj FROM kreatura; - Usuwa powtarzające sie kolumny, wiersze
 SELECT nazwa, ilosc,rodzaj FROM zasob WHERE rodzaj = 'jedznie' AND ilosc = 1;
 SELECT distinct ilosc,rodzaj FROM zasob WHERE rodzaj = 'jedznie' AND ilosc = 1; = usuwa dublikaty (wartosci powtarzajace sie itp)
 
 SELECT concat('Ala','ma','kota'); - laczenie tego co w srodku
 SELECT concat (nazwa. 'to id=', idKreatury) FROM kreatura;
+```
 
 Zadanie 4
 a) select distinct rodzaj FROM zasob;

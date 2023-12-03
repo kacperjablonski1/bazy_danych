@@ -104,8 +104,7 @@ SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
 ***1. Zakładając, że każdy rodzaj jedzenia to 30% odpadu, wyświetl masę właściwego jedzenia (netto) oraz wagę odpadków.***
 
 ```sql
-SELECT nazwa, waga * 0.7 AS masa_netto, waga * 0.3 AS masa_odpadkow FROM zasob
-WHERE rodzaj = 'jedzenie';
+SELECT nazwa, waga * 0.7 AS masa_netto, waga * 0.3 AS masa_odpadkow FROM zasob WHERE rodzaj = 'jedzenie';
 ```
 
 ***2. Wyświetl zasoby, które nie mają rodzaju.****

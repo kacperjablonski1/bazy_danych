@@ -37,11 +37,19 @@ SELECT * FROM kreatura WHERE rodzaj NOT LIKE 'wiedzma' AND udzwig >= 50;
 
 SELECT * FROM kreatura WHERE NOT rodzaj = 'wiedzma' AND udzwig >=50;
 ```
+***2. Wyświetl zasoby, które ważą pomiędzy 2 a 5kg.***
 
-b) SELECT * FROM zasob WHERE waga between 2 AND 5;
-c)  SELECT * FROM kreatura WHERE nazwa = '%or%' AND udzwig between 30 AND 70;
+```sql
+SELECT * FROM zasob WHERE waga between 2 AND 5;
+```
 
-Zadanie 3 
+***3. Wyświetl kreatury, których nazwa zawiera 'or' i które dźwigają między 30kg a 70kg.***
+
+```sql
+SELECT * FROM kreatura WHERE nazwa = '%or%' AND udzwig between 30 AND 70;
+```
+
+# Zadanie 3 
 a) SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
 b) SELECT * FROM zasob order by rodzaj;
 SELECT DISTINCT rodzaj FROM kreatura;

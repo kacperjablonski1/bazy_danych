@@ -3,9 +3,9 @@
 ***1. Skopiuj tabele 'kreatura','zasob','ekwipunek' z bazy 'wikingowie' do swojej bazy.***
 
 ```sql
-*a)  CREATE TABLE kreatura  AS SELECT * FROM wikingowie.kreatura;
-*b)  CREATE TABLE zasob  AS SELECT * FROM wikingowie.zasob;
-*c)  CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
+a)  CREATE TABLE kreatura  AS SELECT * FROM wikingowie.kreatura;
+b)  CREATE TABLE zasob  AS SELECT * FROM wikingowie.zasob;
+c)  CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
 ```
 
 ***2. Wypisz wszystkie rekordy z tabeli 'zasob'.***
@@ -20,13 +20,24 @@ SELECT * FROM zasob;
 SELECT * FROM zasob WHERE rodzaj = 'jedzenie';
 ```
 
-d)  SELECT idZasobu  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);
-d) SELECT idZasobu, ilosc  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 1); 
-d) SELECT idZasobu, ilosc  FROM ekwipunek WHERE idKreatu IN (1,3,5);
+***4. Wypisz 'idZasobu'.'ilosc', dla kreatur o id 1,3,5.
 
-Zadanie 2 
-a) SELECT * FROM kreatura WHERE rodzaj NOT LIKE 'wiedzma' AND udzwig >= 50;
-a) SELECT * FROM kreatura WHERE NOT rodzaj = 'wiedzma' AND udzwig >=50;
+```sql
+SELECT idZasobu  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);
+SELECT idZasobu, ilosc  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 1);
+
+SELECT idZasobu, ilosc  FROM ekwipunek WHERE idKreatu IN (1,3,5); 
+```
+
+# Zadanie 2 
+***1. Wyświetl kreatury, które nie są wiedźmą i dźwigają co najmniej 50kg.*** 
+
+```sql
+SELECT * FROM kreatura WHERE rodzaj NOT LIKE 'wiedzma' AND udzwig >= 50;
+
+SELECT * FROM kreatura WHERE NOT rodzaj = 'wiedzma' AND udzwig >=50;
+```
+
 b) SELECT * FROM zasob WHERE waga between 2 AND 5;
 c)  SELECT * FROM kreatura WHERE nazwa = '%or%' AND udzwig between 30 AND 70;
 

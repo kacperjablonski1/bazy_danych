@@ -68,15 +68,17 @@ UPDATE postac SET statek = 'Czarna Perla' WHERE nazwa LIKE '%a%'
 ***b) Zmniejsz ladowność wszystkim statkom o 30%, których data wodowania była w XX wieku***
 
 ```sql
-DODATEK (SORTOWANIE)
+Update statek set max_ladownosc = max_ladownosc * 0.7 where year(data_wodowania) between 1701 and 2001;
+```
+
+*DODATEK (SORTOWANIE)*
+
+```sql
 SELECT * FROM statek WHERE data_wodowania >='1901-01-01' AND data_wodowania <= '2003-10-02';
 SELECT * FROM statek WHERE data_wodowania BETWEEN '1903-94-23' AND '2009-12-31';
 SELECT data_wodowania FROM statek;
 SELECT year/day/month (data_wodowania) FROM statek;
 SELECT * FROM statek WHERE year (data_wodoowania) BETWEEN 1901 AND 2000;
-(KONIEC) 
-
-Update statek set max_ladownosc = max_ladownosc * 0.7 where year(data_wodowania) between 1701 and 2001;
 ```
 
 ***c) Ustaw warunek sprawdzajacy czy wiek postaci nie jest większy od 1000***

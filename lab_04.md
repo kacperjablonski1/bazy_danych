@@ -150,11 +150,11 @@ VALUES (2022, 1, 'bigos', 'papryczka chilli', 2);
 ```sql
 INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
 VALUES 
-    ('Wiking1', 'wiking', '1980-01-01', 35),
-    ('Wiking2', 'wiking', '1985-03-15', 30),
-    ('Wiking3', 'wiking', '1990-05-20', 25),
-    ('Wiking4', 'wiking', '1995-08-10', 20),
-    ('Wiking5', 'wiking', '2000-12-25', 15);
+    ('Jack Sparrow', 'wiking', '1980-01-01', 35),
+    ('Barbarosa', 'wiking', '1985-03-15', 30),
+    ('Lord Voldemort', 'wiking', '1990-05-20', 25),
+    ('Eivor Varinsdottir', 'wiking', '1995-08-10', 20),
+    ('Yoda', 'wiking', '2000-12-25', 15);
 ```
 
 ***2. Stworz tabele statek z polami:***
@@ -215,7 +215,7 @@ SET id_statku = 'HMS Victory'
 WHERE nazwa IN ('Wiking1', 'Wiking2', 'Drozd');
 ```
 
-*Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Black Pearl*
+*Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Czarna Perła*
 
 ```sql
 UPDATE postac

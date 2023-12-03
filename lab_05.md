@@ -67,7 +67,7 @@ UPDATE postac SET statek = 'Czarna Perla' WHERE nazwa LIKE '%a%'
 
 ***b) Zmniejsz ladowność wszystkim statkom o 30%, których data wodowania była w XX wieku***
 
-```
+```sql
 DODATEK (SORTOWANIE)
 SELECT * FROM statek WHERE data_wodowania >='1901-01-01' AND data_wodowania <= '2003-10-02';
 SELECT * FROM statek WHERE data_wodowania BETWEEN '1903-94-23' AND '2009-12-31';
@@ -89,7 +89,7 @@ ALTER TABLE postac ADD CHECK (wiek <= 1000); - jesli teraz byśmy chcieli cos zm
 
 ***a) Do postaci dodaj węza Loko, tylko nie wsadzaj go na statek.***
 
-```
+```sql
 najpierw enum
 
 ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena','waz');
@@ -126,7 +126,7 @@ ALTER TABLE marynarz ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku)
 
 ***a) wysadz wszystkich ze statku***
 
-```sqk
+```sql
 UPDATE marynarz SET id_statku = NULL WHERE id_postaci IN (5,3,4,5,7);
 ```
 
@@ -138,7 +138,7 @@ DELETE FROM marynarz WHERE nazwa = 'Barbarosa';
 
 ***c) zniszcz wszystkie statki***
 
-```
+```sql
 Najpierw trzeba usunac klucze obce ktore sie odwoluja do tych statkow.
 
 ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;

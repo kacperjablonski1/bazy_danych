@@ -62,7 +62,7 @@ select nazwa from postac where nazwa regexp '%a%';
 ***a) Wszystkie postacie, które mają w swojej nazwie 'a', wsadź na statek Bjorna***
 
 ```sql
-UPDATE postac SET statek = 'Czarna Perla' WHERE nazwa LIKE '%a%'
+UPDATE postac SET statek = 'Czarna Perła' WHERE nazwa LIKE '%a%'
 ```
 
 ***b) Zmniejsz ladowność wszystkim statkom o 30%, których data wodowania była w XX wieku***

@@ -1,12 +1,11 @@
 # Zadanie 1
 
-
 ***1. Stwórz tabele postac z nastepujacymi polami:***
-* *a) id_postaci kl. gtówny, liczba samozwiekszajaca sie*
-* *b) nazwa - ciag znaków max 40*
-* *c) rodzaj - typ wyliczeniowy (wiking, ptak, kobieta)*
-* *d) data_ur - typ daty*
-* *e) wiek - liczba nieujemna.*
+* *a. id_postaci kl. gtówny, liczba samozwiekszajaca sie*
+* *b. nazwa - ciag znaków max 40*
+* *c. rodzaj - typ wyliczeniowy (wiking, ptak, kobieta)*
+* *d. data_ur - typ daty*
+* *e. wiek - liczba nieujemna.*
 
 
 ```
@@ -45,10 +44,10 @@ WHERE nazwa = 'Tesciowa';
 # Zadanie 2 
 
 ***1. Stwórz tabele walizka:***
-* *a) id_walizki - liczba samozwiekszajaca sie, klucz growny*
-* *b) pojemnosc - liczba nieujemna*
-* *c) kolor - typ wyliczeniowy (rózowy, czerwony, teczowy, zótty)*
-* *d) id_wlasciciela - klucz obcy odwotujacy sie do tabeli postac, ustawione kaskadowe usuwanie.*
+* *a. id_walizki - liczba samozwiekszajaca sie, klucz growny*
+* *b. pojemnosc - liczba nieujemna*
+* *c. kolor - typ wyliczeniowy (rózowy, czerwony, teczowy, zótty)*
+* *d. id_wlasciciela - klucz obcy odwotujacy sie do tabeli postac, ustawione kaskadowe usuwanie.*
 
 ```
 CREATE TABLE walizka (
@@ -81,11 +80,11 @@ VALUES (25, (SELECT id_postaci FROM postac WHERE nazwa = 'Tesciowa'));
 
 # Zadanie 3 
 
-* *1) Stwórz tabele izba z polami:*
-* *a) adres_budynku - czesc klucza gtównego*
-* *b) nazwa_izby - czesc klucza gtównego*
-* *c) metraz - liczba nieujemna*
-* *d) wlasciciel - klucz obcy do tabeli postac, ustaw null w razie usuniecia.*
+***1 Stwórz tabele izba z polami:***
+* *a. adres_budynku - czesc klucza gtównego*
+* *b. nazwa_izby - czesc klucza gtównego*
+* *c. metraz - liczba nieujemna*
+* *d. wlasciciel - klucz obcy do tabeli postac, ustaw null w razie usuniecia.*
 
 ```
 CREATE TABLE izba (
@@ -114,13 +113,13 @@ VALUES (1, 'spizarnia', 15, 'zielony', NULL);
 
 # Zadanie 4 
 
-***1. *Stwórz tabele pretwory z polami:***
-*a) *Id _przetworu - Klucz growny*
-*b) *rok_produkji - typ roku, domyslnie 1654*
-*c) *id_wykonawcy - klucz obcy do tabeli postac*
-*d) *zawartosc - ciag znaków*
-*e) *dodatek - ciag znaków - domyslnie papryczka chilli*
-*f) *id_konsumenta - klucz obcy do tabeli postac*
+***1. Stwórz tabele pretwory z polami:***
+* *a. Id _przetworu - Klucz growny*
+* *b. rok_produkji - typ roku, domyslnie 1654*
+* *c. id_wykonawcy - klucz obcy do tabeli postac*
+* *d. zawartosc - ciag znaków*
+* *e. dodatek - ciag znaków - domyslnie papryczka chilli*
+* *f. id_konsumenta - klucz obcy do tabeli postac*
 
 ```
 CREATE TABLE przetwory (
@@ -135,16 +134,20 @@ CREATE TABLE przetwory (
 );
 ```
 
-2. Wstaw bigos z papryczka chilli do tabeli przetwory.
+***2. Wstaw bigos z papryczka chilli do tabeli przetwory.***
 
--- Załóżmy, że ID wykonawcy i ID konsumenta dla bigosu to odpowiednio 1 i 2 (dla przykładu)
+*Załóżmy, że ID wykonawcy i ID konsumenta dla bigosu to odpowiednio 1 i 2 (dla przykładu)*
+
+```
 INSERT INTO przetwory (rok_produkcji, id_wykonawcy, zawartosc, id_konsumenta)
 VALUES (2022, 1, 'bigos', 'papryczka chilli', 2);
+```
 
 # Zadanie 5
 
-1. Wstaw 5 wikingów do tabeli postaci.
+***1. Wstaw 5 wikingów do tabeli postaci.***
 
+```
 INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
 VALUES 
     ('Wiking1', 'wiking', '1980-01-01', 35),
@@ -152,61 +155,75 @@ VALUES
     ('Wiking3', 'wiking', '1990-05-20', 25),
     ('Wiking4', 'wiking', '1995-08-10', 20),
     ('Wiking5', 'wiking', '2000-12-25', 15);
+```
 
-2. Stworz tabele statek z polami:
-a. nazwa statku - klucz gtówny
-b. rodzaj statku - typ wyliczeniowy
-c. data wodowania - typ daty
-d. max_ladownosc - liczba dodatnia
+***2. Stworz tabele statek z polami:***
+* *a. nazwa statku - klucz gtówny*
+* *b. rodzaj statku - typ wyliczeniowy*
+* *c. data wodowania - typ daty*
+* *d. max_ladownosc - liczba dodatnia*
 
+```
 CREATE TABLE statek (
     nazwa_statku VARCHAR(50) PRIMARY KEY,
     rodzaj_statku ENUM('żaglowiec', 'okręt wojenny', 'statek handlowy'),
     data_wodowania DATE,
     max_ladownosc INT UNSIGNED
 );
+```
 
-3. Dodaj dwa statki do tabeli.
+***3. Dodaj dwa statki do tabeli.***
 
+```
 INSERT INTO statek (nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc)
 VALUES 
     ('HMS Victory', 'okręt wojenny', '1765-09-01', 800),
     ('Black Pearl', 'żaglowiec', '1688-07-10', 500);
+```
 
-4. Dodaj pola do tabeli postac:
-a. funkcja - ciag znakow.
+***4. Dodaj pola do tabeli postac:***
+* *a. funkcja - ciag znakow.*
 
+```
 ALTER TABLE postac
 ADD COLUMN funkcja VARCHAR(50);
+```
 
-5. Zmien funkcje u Bjorna na kapitan.
+***5. Zmien funkcje u Bjorna na kapitan.***
 
+```
 UPDATE postac
 SET funkcja = 'kapitan'
 WHERE nazwa = 'Bjorn';
+```
 
-6. Dodaj klucz obcy w tabeli postac odwotujacy sie do statku.
+***6. Dodaj klucz obcy w tabeli postac odwotujacy sie do statku.***
 
+```
 ALTER TABLE postac
 ADD COLUMN id_statku VARCHAR(50),
 ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
+```
 
-7. Powsadzaj wikingów oraz drozda na statki.
+***7. Powsadzaj wikingów oraz drozda na statki.***
 
--- Załóżmy, że Wiking1, Wiking2, Drozd idą na statek HMS Victory
+*Załóżmy, że Wiking1, Wiking2, Drozd idą na statek HMS Victory*
+```
 UPDATE postac
 SET id_statku = 'HMS Victory'
 WHERE nazwa IN ('Wiking1', 'Wiking2', 'Drozd');
-
--- Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Black Pearl
+```
+*Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Black Pearl*
+```
 UPDATE postac
 SET id_statku = 'Black Pearl'
 WHERE nazwa IN ('Wiking3', 'Wiking4', 'Wiking5');
-
-8. Usun izbe spizarnia z tabell izba.
-
+```
+***8. Usun izbe spizarnia z tabell izba.***
+```
 DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
-
-9. Usun tabele izba.
-
+```
+***9. Usun tabele izba.***
+```
 DROP TABLE izba;
+```

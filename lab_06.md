@@ -60,13 +60,13 @@ SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
 ***2. Wyświetl zasoby, które mają zdefiniowany rodzaj od najlżejszego do najcięższego***
 
 ```sql
-b) SELECT * FROM zasob order by rodzaj;
+SELECT * FROM zasob order by rodzaj;
 ```
 
 ***3. Wyświetl 5 najstarszych kreatur****
 
 ```sql
-c) SELECT * FROM kreatura order by dataUr DESC LIMIT 5;
+SELECT * FROM kreatura order by dataUr DESC LIMIT 5;
 ```
 
 *DODATKOWE*

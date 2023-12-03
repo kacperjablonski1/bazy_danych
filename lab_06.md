@@ -14,13 +14,13 @@ c)  CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
 SELECT * FROM zasob;
 ```
 
-***3. Wypisz wszystkie rekordy z tabeli 'zasob' gdzie typ to jedznienie.
+***3. Wypisz wszystkie rekordy z tabeli 'zasob' gdzie typ to jedznienie.***
 
 ```sql
 SELECT * FROM zasob WHERE rodzaj = 'jedzenie';
 ```
 
-***4. Wypisz 'idZasobu'.'ilosc', dla kreatur o id 1,3,5.
+***4. Wypisz 'idZasobu'.'ilosc', dla kreatur o id 1,3,5.***
 
 ```sql
 SELECT idZasobu  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);

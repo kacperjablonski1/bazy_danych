@@ -3,9 +3,9 @@
 ***1. Skopiuj tabele 'kreatura','zasob','ekwipunek' z bazy 'wikingowie' do swojej bazy.***
 
 ```sql
-a)  CREATE TABLE kreatura  AS SELECT * FROM wikingowie.kreatura;
-b)  CREATE TABLE zasob  AS SELECT * FROM wikingowie.zasob;
-c)  CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
+CREATE TABLE kreatura  AS SELECT * FROM wikingowie.kreatura;
+CREATE TABLE zasob  AS SELECT * FROM wikingowie.zasob;
+CREATE TABLE ekwipunek AS SELECT * FROM wikingowie.ekwipunek;
 ```
 
 ***2. Wypisz wszystkie rekordy z tabeli 'zasob'.***

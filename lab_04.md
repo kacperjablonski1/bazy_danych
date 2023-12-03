@@ -45,10 +45,10 @@ WHERE nazwa = 'Tesciowa';
 # Zadanie 2 
 
 ***1. Stwórz tabele walizka:***
-*a) *id_walizki - liczba samozwiekszajaca sie, klucz growny
-*b) *pojemnosc - liczba nieujemna
-*c) *kolor - typ wyliczeniowy (rózowy, czerwony, teczowy, zótty)
-*d) *id_wlasciciela - klucz obcy odwotujacy sie do tabeli postac, ustawione kaskadowe usuwanie.
+* *a) id_walizki - liczba samozwiekszajaca sie, klucz growny*
+* *b) pojemnosc - liczba nieujemna*
+* *c) kolor - typ wyliczeniowy (rózowy, czerwony, teczowy, zótty)*
+* *d) id_wlasciciela - klucz obcy odwotujacy sie do tabeli postac, ustawione kaskadowe usuwanie.*
 
 ```
 CREATE TABLE walizka (
@@ -81,11 +81,11 @@ VALUES (25, (SELECT id_postaci FROM postac WHERE nazwa = 'Tesciowa'));
 
 # Zadanie 3 
 
-*1) *Stwórz tabele izba z polami:*
-*a) *adres_budynku - czesc klucza gtównego*
-*b) *nazwa_izby - czesc klucza gtównego*
-*c) *metraz - liczba nieujemna*
-*d) *wlasciciel - klucz obcy do tabeli postac, ustaw null w razie usuniecia.*
+* *1) Stwórz tabele izba z polami:*
+* *a) adres_budynku - czesc klucza gtównego*
+* *b) nazwa_izby - czesc klucza gtównego*
+* *c) metraz - liczba nieujemna*
+* *d) wlasciciel - klucz obcy do tabeli postac, ustaw null w razie usuniecia.*
 
 ```
 CREATE TABLE izba (

@@ -19,3 +19,17 @@ CREATE TABLE postac (
 );
 ```
 ***2. Do tabeli postac dodaj rekordy, gdzie kolumna naza to Bjorn, Drozd, Tesciowa (w pozostare pola wisz w miare sensowne dane).***
+
+```
+-- Dodanie rekordu dla Bjorna
+INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
+VALUES ('Bjorn', 'wiking', '1990-05-15', 33);
+
+-- Dodanie rekordu dla Drozda
+INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
+VALUES ('Drozd', 'ptak', '2015-02-20', 8);
+
+-- Dodanie rekordu dla Tesciowej
+INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
+VALUES ('Tesciowa', 'kobieta', '1935-12-10', 87);
+```

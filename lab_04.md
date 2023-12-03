@@ -207,20 +207,20 @@ ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
 
 ***7. Powsadzaj wikingów oraz drozda na statki.***
 
-*Załóżmy, że Wiking1, Wiking2, Drozd idą na statek HMS Victory*
+*Załóżmy, że Jack Sparrow, Lord Voldemort, Drozd idą na statek Czarna Perła*
+
+```sql
+UPDATE postac
+SET id_statku = 'Czarna Perła'
+WHERE nazwa IN ('Jack Sparrow', 'Lord Voldemort', 'Drozd');
+```
+
+*Załóżmy, że Barbarosa, Eivor Varinsdottir, Yoda idą na statek HMS Victory*
 
 ```sql
 UPDATE postac
 SET id_statku = 'HMS Victory'
-WHERE nazwa IN ('Wiking1', 'Wiking2', 'Drozd');
-```
-
-*Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Czarna Perła*
-
-```sql
-UPDATE postac
-SET id_statku = 'Black Pearl'
-WHERE nazwa IN ('Wiking3', 'Wiking4', 'Wiking5');
+WHERE nazwa IN ('Barbarosa', 'Eivor Varinsdottir', 'Yoda');
 ```
 
 ***8. Usun izbe spizarnia z tabell izba.***

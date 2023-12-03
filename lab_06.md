@@ -80,15 +80,41 @@ SELECT concat('Ala','ma','kota'); - laczenie tego co w srodku
 SELECT concat (nazwa. 'to id=', idKreatury) FROM kreatura;
 ```
 
-Zadanie 4
-a) select distinct rodzaj FROM zasob;
-b) SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
-c) SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
+# Zadanie 4
+***1. Wyświetl unikalne rodzaje zasobów.***
 
-Zadanie 5
-a) SELECT nazwa, waga * 0.7 AS masa_netto, waga * 0.3 AS masa_odpadkow
-FROM zasob
+```sql
+SELECT DISTINCT rodzaj FROM zasob;
+```
+
+***2. Wyświetl jako jedną kolumnę nazwę i rodzaj kreatury (w postaci: nazwa - rodzaj), gdzie rodzaj rozpoczyna się od 'wi'.***
+
+```sql
+SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
+```
+
+***3. Wyświetl zasoby z całkowitą wagą danego zasobu (ilość * waga) dla zasobów pozyskanych w latach 2000-2007.***
+
+```sql
+SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
+```
+
+# Zadanie 5
+
+***1. Zakładając, że każdy rodzaj jedzenia to 30% odpadu, wyświetl masę właściwego jedzenia (netto) oraz wagę odpadków.***
+
+```sql
+SELECT nazwa, waga * 0.7 AS masa_netto, waga * 0.3 AS masa_odpadkow FROM zasob
 WHERE rodzaj = 'jedzenie';
-b) select * from zasob where rodzaj is null;
-c) SELECT DISTINCT rodzaj FROM zasob WHERE (nazwa LIKE 'Ba%' OR nazwa LIKE '%os') AND rodzaj IS NOT NULL
-ORDER BY rodzaj;
+```
+
+***2. Wyświetl zasoby, które nie mają rodzaju.****
+
+```sql
+SELECT * FROM zasob WHERE rodzaj IS NULL;
+```
+***3. Wyświetl wszystkie unikalne rodzaje zasobów, których nazwa zaczyna się od 'Ba' lub kończy się na 'os'. Dane posortuj alfabetycznie.***
+
+```sql
+SELECT DISTINCT rodzaj FROM zasob WHERE (nazwa LIKE 'Ba%' OR nazwa LIKE '%os') AND rodzaj IS NOT NULL ORDER BY rodzaj;
+```

@@ -8,7 +8,7 @@
 * *e. wiek - liczba nieujemna.*
 
 
-```
+```sql
 CREATE TABLE postac (
     id_postaci INT AUTO_INCREMENT PRIMARY KEY,
     nazwa VARCHAR(40),

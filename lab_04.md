@@ -19,7 +19,7 @@ CREATE TABLE postac (
 ```
 ***2. Do tabeli postac dodaj rekordy, gdzie kolumna naza to Bjorn, Drozd, Tesciowa (w pozostare pola wisz w miare sensowne dane).***
 
-```
+```sql
 -- Dodanie rekordu dla Bjorna
 INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
 VALUES ('Bjorn', 'wiking', '1990-05-15', 33);
@@ -35,7 +35,7 @@ VALUES ('Tesciowa', 'kobieta', '1935-12-10', 87);
 
 ***3. Zmodyfikuj wiek tesciowej na 88 lat.***
 
-```
+```sql
 UPDATE postac
 SET wiek = 88
 WHERE nazwa = 'Tesciowa';
@@ -49,7 +49,7 @@ WHERE nazwa = 'Tesciowa';
 * *c. kolor - typ wyliczeniowy (rózowy, czerwony, teczowy, zótty)*
 * *d. id_wlasciciela - klucz obcy odwotujacy sie do tabeli postac, ustawione kaskadowe usuwanie.*
 
-```
+```sql
 CREATE TABLE walizka (
     id_walizki INT AUTO_INCREMENT PRIMARY KEY,
     pojemnosc INT UNSIGNED,
@@ -61,14 +61,14 @@ CREATE TABLE walizka (
 
 ***2. Dodaj do pola kolor wartosc domyslna - rózowy.***
 
-```
+```sql
 ALTER TABLE walizka
 ALTER COLUMN kolor SET DEFAULT 'rózowy';
 ```
 
 ***3. Dodaj jedna walizke dla Bjorna i jedna walizke, dla tesciowej.***
 
-```
+```sql
 -- Dodanie walizki dla Bjorna
 INSERT INTO walizka (pojemnosc, id_wlasciciela)
 VALUES (30, (SELECT id_postaci FROM postac WHERE nazwa = 'Bjorn'));
@@ -86,7 +86,7 @@ VALUES (25, (SELECT id_postaci FROM postac WHERE nazwa = 'Tesciowa'));
 * *c. metraz - liczba nieujemna*
 * *d. wlasciciel - klucz obcy do tabeli postac, ustaw null w razie usuniecia.*
 
-```
+```sql
 CREATE TABLE izba (
     adres_budynku INT,
     nazwa_izby VARCHAR(50),
@@ -99,14 +99,14 @@ CREATE TABLE izba (
 
 ***2. Za pomoca odazielnego polecenia dodaj pole kolor izby po polu metraz. Ustaw domysiny kolor na czarny.***
 
-```
+```sql
 ALTER TABLE izba
 ADD COLUMN kolor VARCHAR(20) DEFAULT 'czarny' AFTER metraz;
 ```
 
 ***3. Stworz izbe spizarnia.***
 
-```
+```sql
 INSERT INTO izba (adres_budynku, nazwa_izby, metraz, kolor, wlasciciel)
 VALUES (1, 'spizarnia', 15, 'zielony', NULL);
 ```
@@ -121,7 +121,7 @@ VALUES (1, 'spizarnia', 15, 'zielony', NULL);
 * *e. dodatek - ciag znaków - domyslnie papryczka chilli*
 * *f. id_konsumenta - klucz obcy do tabeli postac*
 
-```
+```sql
 CREATE TABLE przetwory (
     Id_przetworu INT AUTO_INCREMENT PRIMARY KEY,
     rok_produkcji YEAR DEFAULT 1654,
@@ -138,7 +138,7 @@ CREATE TABLE przetwory (
 
 *Załóżmy, że ID wykonawcy i ID konsumenta dla bigosu to odpowiednio 1 i 2 (dla przykładu)*
 
-```
+```sql
 INSERT INTO przetwory (rok_produkcji, id_wykonawcy, zawartosc, id_konsumenta)
 VALUES (2022, 1, 'bigos', 'papryczka chilli', 2);
 ```
@@ -147,7 +147,7 @@ VALUES (2022, 1, 'bigos', 'papryczka chilli', 2);
 
 ***1. Wstaw 5 wikingów do tabeli postaci.***
 
-```
+```sql
 INSERT INTO postac (nazwa, rodzaj, data_ur, wiek)
 VALUES 
     ('Wiking1', 'wiking', '1980-01-01', 35),
@@ -163,7 +163,7 @@ VALUES
 * *c. data wodowania - typ daty*
 * *d. max_ladownosc - liczba dodatnia*
 
-```
+```sql
 CREATE TABLE statek (
     nazwa_statku VARCHAR(50) PRIMARY KEY,
     rodzaj_statku ENUM('żaglowiec', 'okręt wojenny', 'statek handlowy'),
@@ -174,7 +174,7 @@ CREATE TABLE statek (
 
 ***3. Dodaj dwa statki do tabeli.***
 
-```
+```sql
 INSERT INTO statek (nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc)
 VALUES 
     ('HMS Victory', 'okręt wojenny', '1765-09-01', 800),
@@ -184,14 +184,14 @@ VALUES
 ***4. Dodaj pola do tabeli postac:***
 * *a. funkcja - ciag znakow.*
 
-```
+```sql
 ALTER TABLE postac
 ADD COLUMN funkcja VARCHAR(50);
 ```
 
 ***5. Zmien funkcje u Bjorna na kapitan.***
 
-```
+```sql
 UPDATE postac
 SET funkcja = 'kapitan'
 WHERE nazwa = 'Bjorn';
@@ -199,7 +199,7 @@ WHERE nazwa = 'Bjorn';
 
 ***6. Dodaj klucz obcy w tabeli postac odwotujacy sie do statku.***
 
-```
+```sql
 ALTER TABLE postac
 ADD COLUMN id_statku VARCHAR(50),
 ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
@@ -208,22 +208,29 @@ ADD FOREIGN KEY (id_statku) REFERENCES statek(nazwa_statku);
 ***7. Powsadzaj wikingów oraz drozda na statki.***
 
 *Załóżmy, że Wiking1, Wiking2, Drozd idą na statek HMS Victory*
-```
+
+```sql
 UPDATE postac
 SET id_statku = 'HMS Victory'
 WHERE nazwa IN ('Wiking1', 'Wiking2', 'Drozd');
 ```
+
 *Załóżmy, że Wiking3, Wiking4, Wiking5 idą na statek Black Pearl*
-```
+
+```sql
 UPDATE postac
 SET id_statku = 'Black Pearl'
 WHERE nazwa IN ('Wiking3', 'Wiking4', 'Wiking5');
 ```
+
 ***8. Usun izbe spizarnia z tabell izba.***
-```
+
+```sql
 DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
 ```
+
 ***9. Usun tabele izba.***
-```
+
+```sql
 DROP TABLE izba;
 ```

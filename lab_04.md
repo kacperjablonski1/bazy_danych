@@ -178,7 +178,7 @@ CREATE TABLE statek (
 INSERT INTO statek (nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc)
 VALUES 
     ('HMS Victory', 'okręt wojenny', '1765-09-01', 800),
-    ('Black Pearl', 'żaglowiec', '1688-07-10', 500);
+    ('Czarna Perła', 'żaglowiec', '1688-07-10', 500);
 ```
 
 ***4. Dodaj pola do tabeli postac:***

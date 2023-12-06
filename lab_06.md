@@ -60,7 +60,7 @@ SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
 ***2. Wyświetl zasoby, które mają zdefiniowany rodzaj od najlżejszego do najcięższego***
 
 ```sql
-SELECT * FROM zasob order by rodzaj;
+SELECT * FROM zasob ORDER BY rodzaj ASC;
 ```
 
 ***3. Wyświetl 5 najstarszych kreatur****
@@ -90,13 +90,16 @@ SELECT DISTINCT rodzaj FROM zasob;
 ***2. Wyświetl jako jedną kolumnę nazwę i rodzaj kreatury (w postaci: nazwa - rodzaj), gdzie rodzaj rozpoczyna się od 'wi'.***
 
 ```sql
+SELECT concat(nazwa, ' to id=', idKreatury) FROM kreatura WHERE rodzaj LIKE 'wi%;
+
 SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
 ```
 
 ***3. Wyświetl zasoby z całkowitą wagą danego zasobu (ilość * waga) dla zasobów pozyskanych w latach 2000-2007.***
 
 ```sql
-SELECT ilosc*waga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
+SELECT nazwa, (ilosc*waga) as calkowitaWaga
+FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
 ```
 
 # Zadanie 5

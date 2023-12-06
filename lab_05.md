@@ -31,7 +31,7 @@ ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
 ```sql
 ALTER TABLE postac ADD COLUMN pesel char(11) PRIMARY KEY first; (żeby to zadziałało, to trzeba ustawić coś w tabeli)
 
-UPTADE postac SET pesel = '98434534592' + id_postaci;
+UPDATE postac SET pesel = '98434534592' + id_postaci;
 
 ALTER TABLE postac ADD PRIMARY KEY (pesel);
 ```

@@ -39,6 +39,8 @@ ALTER TABLE postac ADD PRIMARY KEY (pesel);
 ***b) W tabeli postać zmień pole rodzaj, tak, aby możliwe było dodanie syreny. (ENUM dodaj syrene)***
 
 ```sql
+ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena');
+
 ALTER TABLE postac MODIFY  rodzaj enum('(Trzeba wszystko wypisac jeszcze raz + coś nowego)')
 ```
 

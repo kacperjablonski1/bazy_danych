@@ -98,8 +98,7 @@ SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
 ***3. Wyświetl zasoby z całkowitą wagą danego zasobu (ilość * waga) dla zasobów pozyskanych w latach 2000-2007.***
 
 ```sql
-SELECT nazwa, (ilosc*waga) as calkowitaWaga
-FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
+SELECT nazwa, (ilosc*waga) as calkowitaWaga FROM zasob WHERE year(dataPozyskania) BETWEEN 2000 AND 2007;
 ```
 
 # Zadanie 5

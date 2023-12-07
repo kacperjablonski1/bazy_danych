@@ -60,6 +60,8 @@ SELECT * FROM zasob WHERE month(dataPozyskania) between 07 AND 08;
 ***2. Wyświetl zasoby, które mają zdefiniowany rodzaj od najlżejszego do najcięższego***
 
 ```sql
+SELECT * FROM zasob WHERE rodzaj IS NOT NULL ORDER BY waga ASC;
+
 SELECT * FROM zasob ORDER BY rodzaj ASC;
 ```
 

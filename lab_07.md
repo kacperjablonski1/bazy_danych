@@ -38,5 +38,7 @@ najpierw odfiltrowanie pozniej agregowanie
 ```
 5.
 ```sql
-Select count(distinct nazwa) FROM zasob;
+Select count(distinct nazwa) FROM zasob GROUP BY rodzaj HAVING min(ilosc) > 1;
+SELECT count(distinct nazwa) from zasob GROUP BY rodzaj HAVING min(ilosc) >1;
 ```
+# Zadanie 3 

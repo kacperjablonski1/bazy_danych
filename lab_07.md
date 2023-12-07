@@ -29,7 +29,7 @@ select count(distinct nazwa) FROM zasob;
 # Zadanie 2
 1.
 ```sql
-SELECT * FROM zasob;
+ SELECT rodzaj,sum(waga) from zasob GROUP BY rodzaj;
 ```
 3.
 ```sql

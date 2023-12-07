@@ -8,6 +8,8 @@ SELECT avg(waga) FROM kreatura WHERE rodzaj = 'wiking'
 ```
 2.
 ```sql
+SELECT avg(waga), count(rodzaj) from kreatura GROUP BY rodzaj;
+
 SELECT count(*) FROM kreatura GROUP BY rodzaj;
 ```
 3.

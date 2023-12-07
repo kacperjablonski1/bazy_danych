@@ -90,7 +90,7 @@ SELECT DISTINCT rodzaj FROM zasob;
 ***2. Wyświetl jako jedną kolumnę nazwę i rodzaj kreatury (w postaci: nazwa - rodzaj), gdzie rodzaj rozpoczyna się od 'wi'.***
 
 ```sql
-SELECT concat(nazwa, ' to id=', idKreatury) FROM kreatura WHERE rodzaj LIKE 'wi%;
+SELECT concat(nazwa, ' to id=', idKreatury) FROM kreatura WHERE rodzaj LIKE 'wi%';
 
 SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
 ```

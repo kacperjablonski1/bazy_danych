@@ -16,3 +16,5 @@ SELECT count(*) FROM kreatura GROUP BY rodzaj;
 avg(), sum(),min(),max(), 
 count(*) = zlicza ilosc wierszy
 select sum(waga),count(*),avg(waga) from kreatura;
+select 2023 - year(dataUr) as wiek from kreatura;
+select year(curdate()) - year(dataUr) as wiek from kreatura

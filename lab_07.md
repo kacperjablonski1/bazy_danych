@@ -1,15 +1,17 @@
 # zadanie 1
 
 1. 
-'''sql
+```sql
 SELECT sum(waga)/ sum(rodzaj = 'wiking') from kreatura  where rodzaj = 'wiking';
 2 sposob
 SELECT avg(waga) FROM kreatura WHERE rodzaj = 'wiking'
-'''
-3.
-'''sql
+```
+2.
+```sql
 SELECT count(*) FROM kreatura GROUP BY rodzaj;
-'''
+```
+3.
+
 4. Dodatkowe
 avg(), sum(),min(),max(), 
 count(*) = zlicza ilosc wierszy

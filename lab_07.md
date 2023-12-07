@@ -1,4 +1,4 @@
-# zadanie 1
+# Zadanie 1
 
 1. 
 ```sql
@@ -13,8 +13,17 @@ SELECT count(*) FROM kreatura GROUP BY rodzaj;
 3.
 
 4. Dodatkowe
+```sql
 avg(), sum(),min(),max(), 
 count(*) = zlicza ilosc wierszy
 select sum(waga),count(*),avg(waga) from kreatura;
 select 2023 - year(dataUr) as wiek from kreatura;
 select year(curdate()) - year(dataUr) as wiek from kreatura
+select distinct nazwa FROM zasob;
+select count(distinct nazwa) FROM zasob;
+```
+# Zadanie 2
+1. SELECT * FROM zasob;
+2. SELECT sum(waga) from zasob WHERE ilosc > 4 GROUP BY rodzaj HAVING sum(waga) > 5;
+najpierw odfiltrowanie pozniej agregowanie
+3. Select count(distinct nazwa) FROM zasob;

@@ -72,4 +72,28 @@ SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreat
 podzapytanie
 
 SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
+
+Natural Join - sam laczy (niewarto uzywac)
+```
+
+# Zadanie 4
+1. Wyświetlić nazwy wikingów, którzy urodzili się w latach 70-tych XVII wieku oraz nazwy zasobów, które posiadaają (użyj natural joina jeśli się da)
+```sql
+
+```
+2. Wyświetlić nazwy 5 najmłodszych kreatur, które w ekwipunku posiadają jedzenie.
+```sql
+SELECT k.nazwa, k.dataUr, z.rodzaj FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury INNER JOIN zasob z ON e.idZasobu=z.idZasobu. WHERE z.rodzaj = 'jedzenie' ORDER BY k.dataUr desc limit 5;
+```
+3. Wypisz obok siebie nazwy kreatur, których numer idKreatury różni się o 5 (np. Bjorn - Astrid, Brutal - Ibra itd.)
+```sql
+
+```
+
+# Zadanie 5
+1. Dla każdego rodzaju kreatury wyświetlić średnią wagę zasobów, jaką posiadają w ekwipunku, jeśli kreatura nie jest małpą ani wężem i ilość ekwipunku jest poniżej 30.
+```sql
+```
+2. Dla każdego rodzaju kreatury wyświetlić nazwę, datę urodzenia i rodzaj najmłodszej i najstarszej kreatury.
+```sql
 ```

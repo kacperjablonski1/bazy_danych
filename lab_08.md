@@ -12,5 +12,5 @@ SELECT k.nazwa FROM kreatura k left join uczestnicy u on k.idKreatury=u.id_uczes
 ```
 3. Dla każdej wyprawy wypisać jej nazwę oraz sumę ilości ekwipunku, jaka została zabrana przez uczestników tej wyprawy.
 ```sql
-
+select w.nazwa, u.id_uczestnika, e.ilosc from wyprawa w inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy inner join kreatura k on u.id_uczestnika=k.idKreatury inner join ekwipunek e on k.idKreatury=e.idKreatury;
 ```

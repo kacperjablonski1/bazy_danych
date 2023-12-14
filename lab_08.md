@@ -7,3 +7,6 @@ CREATE TABLE sektor AS SELECT * FROM wikingowie.sektor;
 CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 ```
 2. 
+```sql
+SELECT k.nazwa FROM kreatura k left join uczestnicy u on k.idKreatury=u.id_uczestnika WHERE u.id_wyprawy IS NULL;
+```

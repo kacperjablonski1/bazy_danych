@@ -87,13 +87,16 @@ SELECT k.nazwa, k.dataUr, z.rodzaj FROM kreatura k INNER JOIN ekwipunek e ON k.i
 ```
 3. Wypisz obok siebie nazwy kreatur, których numer idKreatury różni się o 5 (np. Bjorn - Astrid, Brutal - Ibra itd.)
 ```sql
-SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on abs(k1.kreatury-k2.kreatury = 5);
+SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on abs(k1.kreatury-k2.kreatury) = 5;
+lub
+SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on k1.kreatury-k2.kreatury = 5;
 ```
 
 # Zadanie 5
 1. Dla każdego rodzaju kreatury wyświetlić średnią wagę zasobów, jaką posiadają w ekwipunku, jeśli kreatura nie jest małpą ani wężem i ilość ekwipunku jest poniżej 30.
 ```sql
-
+SELECT k.rodzaj, avg(e.ilosc * z.waga) FROM kreatura k inner join ekwipunek e on k.idKreatury=e.id.Kreatury inner join zasob z on e.idZasobu=z.idZasobu
+WHERE k.rodzaj not in ('malpa','waz') and e.ilosc < 30 group by k.rodzaj; 
 ```
 2. Dla każdego rodzaju kreatury wyświetlić nazwę, datę urodzenia i rodzaj najmłodszej i najstarszej kreatury.
 ```sql

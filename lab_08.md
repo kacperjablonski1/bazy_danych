@@ -14,3 +14,33 @@ SELECT k.nazwa FROM kreatura k left join uczestnicy u on k.idKreatury=u.id_uczes
 ```sql
 select w.nazwa, u.id_uczestnika, e.ilosc from wyprawa w inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy inner join kreatura k on u.id_uczestnika=k.idKreatury inner join ekwipunek e on k.idKreatury=e.idKreatury;
 ```
+# Zadanie 2
+1. Dla każdej wyprawy wypisz jej nazwę, liczbę uczestników, oraz tych uczestników w jednej linii.
+```sql
+
+```
+2. Wypisz kolejne etaty wszystkich wypraw wraz z nazwami sektorów, sortując najpierw według daty początku wyprawy, a następnie według kolejności występowania etapów. W każdym etapie określ nazwę kierownika danej wyprawy.
+```sql
+
+```
+# Zadanie 3
+1. Wypisać ile razy dany sektor był odwiedzany podczas wszystkich wypraw (nazwa sektora, ilośćc odwiedzin). Jeśli nie był odwiedzony ani razu, wypisz zero.
+```sql
+
+```
+2. W zależności od ilości wypraw, w jakich brała udział dana kreatura wypisz: nazwa kreatury,
+'brał udział w wyprawie' - gdy liczba > 0, 'nie brał udziału w wyprawie', gdy równa zero.
+```sql
+
+```
+# Zadania 4
+1. Dla każdej wyprawy wypisz jej nazwę oraz sumę liczby znaków, które zostały użyte przy pisaniu dziennika, jeśli ta liczba znaków jest mniejsza od 400.
+```sql
+```
+2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.
+```sql
+```
+# Zadanie 5
+1. Wypisać nazwę kreatury oraz ile miała dni (wiek w dniach) w momencie rozpoczęcia wyprawy, dla wypraw, które przechodziły przez chatkę dziadka.
+```sql
+```

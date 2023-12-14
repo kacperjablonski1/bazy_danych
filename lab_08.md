@@ -17,11 +17,18 @@ SELECT max(w.nazwa),sum(e.ilosc) FROM wyprawa w inner join uczestnicy u on w.id_
 # Zadanie 2
 1. Dla każdej wyprawy wypisz jej nazwę, liczbę uczestników, oraz tych uczestników w jednej linii.
 ```sql
-
+select rodzaj, count(*), group_concat(nazwa SEPARATOR ' ') from kreatura
+group by rodzaj;
 ```
 2. Wypisz kolejne etaty wszystkich wypraw wraz z nazwami sektorów, sortując najpierw według daty początku wyprawy, a następnie według kolejności występowania etapów. W każdym etapie określ nazwę kierownika danej wyprawy.
 ```sql
-
+select w.nazwa, w.data_rozpoczecia,
+e.kolejnosc, s.nazwa, k.nazwa
+from etapy e
+inner join wyprawa w on e.id_wyprawy = w.id_wyprawy
+inner join sektor s on e.idSektora = s.id_sektora
+inner join kreatura k on w.kierownik = k.idKreatury
+order by data_rozpoczecia, kolejnosc;
 ```
 # Zadanie 3
 1. Wypisać ile razy dany sektor był odwiedzany podczas wszystkich wypraw (nazwa sektora, ilośćc odwiedzin). Jeśli nie był odwiedzony ani razu, wypisz zero.

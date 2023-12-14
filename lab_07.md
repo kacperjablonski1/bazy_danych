@@ -100,5 +100,5 @@ WHERE k.rodzaj not in ('malpa','waz') and e.ilosc < 30 group by k.rodzaj;
 ```
 2. Dla każdego rodzaju kreatury wyświetlić nazwę, datę urodzenia i rodzaj najmłodszej i najstarszej kreatury.
 ```sql
-
+SELECT k.rodzaj, k.nazwa, n.najstarsza, n.najmlodsza FROM (SELECT rodzaj, min(dataUr) najstarsza, max(dataUr) najmlodsza FROM kreatura group by rodzaj) n, kreatura k WHERE n.najstarsza = k.dataUr OR n.najmlodsza=k.dataUr; 
 ```

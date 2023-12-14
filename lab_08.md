@@ -6,7 +6,11 @@ CREATE TABLE etapy_wyprawy AS SELECT * FROM wikingowie.etapy_wyprawy;
 CREATE TABLE sektor AS SELECT * FROM wikingowie.sektor;
 CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 ```
-2. 
+2. Wypisz nazwy kreatur, które nie uczestniczyły w wyprawie.
 ```sql
 SELECT k.nazwa FROM kreatura k left join uczestnicy u on k.idKreatury=u.id_uczestnika WHERE u.id_wyprawy IS NULL;
+```
+3. Dla każdej wyprawy wypisać jej nazwę oraz sumę ilości ekwipunku, jaka została zabrana przez uczestników tej wyprawy.
+```sql
+
 ```

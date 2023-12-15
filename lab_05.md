@@ -101,7 +101,8 @@ ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena','waz');
 
 teraz waz Loko
 
-INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja) VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
+INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja)
+VALUES ('12345678910','6','Loko','waz','2023-11-20',12,'waz');
 ```
 
 ***b) Stwórz nowa tabele na podstawie tabeli Postacie (doktadnie takie same pola), 

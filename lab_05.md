@@ -161,7 +161,7 @@ najpierw klucz
 
 ALTER TABLE marynarz DROP FOREIGN KEY marynarz_ibfk_1;
 
-# Potem tabelka.
+Potem tabelka.
 
 DROP TABLE statek;
 ```

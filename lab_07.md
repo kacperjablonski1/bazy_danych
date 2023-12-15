@@ -18,11 +18,11 @@ SELECT rodzaj ,avg(2023 - year(dataUr)) FROM kreatura GROUP BY rodzaj;
 ```sql
 avg(), sum(),min(),max(), 
 count(*) = zlicza ilosc wierszy
-select sum(waga),count(*),avg(waga) from kreatura;
-select 2023 - year(dataUr) as wiek from kreatura;
-select year(curdate()) - year(dataUr) as wiek from kreatura
-select distinct nazwa FROM zasob;
-select count(distinct nazwa) FROM zasob;
+SELECT sum(waga),count(*),avg(waga) FROM kreatura;
+SELECT 2023 - year(dataUr) AS wiek FROM kreatura;
+SELECT year(curdate()) - year(dataUr) AS wiek FROM kreatura
+SELECT DISTINCT nazwa FROM zasob;
+SELECT count(distinct nazwa) FROM zasob;
 ```
 # Zadanie 2
 ***1. Dla każdego rodzaju zasobu wyświetlić sumę wag tego zasobu.***

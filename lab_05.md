@@ -47,7 +47,8 @@ ALTER TABLE postac MODIFY  rodzaj enum('(Trzeba wszystko wypisac jeszcze raz + c
 ***c) Wstaw do tabeli syrene o nazwie Gertruda Nieszczera***
 
 ```sql
-INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek)  VALUES ('23423423423',5,'Gertruda Nieszczera', 'syrena', '2023-11-23',125);
+INSERT INTO postac (pesel,id_postaci,nazwa,rodzaj,data_ur,wiek)
+VALUES ('23423423423',5,'Gertruda Nieszczera', 'syrena', '2023-11-23',125);
 ````
 
 *DODATEK (WYSWIETLANIE)*

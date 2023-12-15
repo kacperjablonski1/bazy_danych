@@ -23,10 +23,14 @@ SELECT * FROM zasob WHERE rodzaj = 'jedzenie';
 ***4. Wypisz 'idZasobu'.'ilosc', dla kreatur o id 1,3,5.***
 
 ```sql
+SELECT idZasobu, ilosc  FROM ekwipunek WHERE idKreatur IN (1,3,5); 
+```
+
+*DODATKOWE*
+
+```sql
 SELECT idZasobu  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 5);
 SELECT idZasobu, ilosc  FROM zasob WHERE (SELECT idKreatury FROM kreatura WHERE idKreatury = 1);
-
-SELECT idZasobu, ilosc  FROM ekwipunek WHERE idKreatur IN (1,3,5); 
 ```
 
 # Zadanie 2 

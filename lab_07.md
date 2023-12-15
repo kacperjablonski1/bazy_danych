@@ -42,15 +42,17 @@ SELECT count(distinct nazwa) FROM zasob GROUP BY rodzaj HAVING min(ilosc) > 1;
 
 ***1. Wyświetlić dla każdej kreatury ilość zasobów jakie niesie.***
 ```sql
-select nazwa, idZasobu, ilosc from kreatura, ekwipunek where kreatura.idKreatury=ekwipunek.idKreatury;
+SELECT nazwa, idZasobu, ilosc FROM kreatura, ekwipunek
+WHERE kreatura.idKreatury=ekwipunek.idKreatury;
 lub
-SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury;
+SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k
+INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury;
 
 INNER JOIN - laczy tabelki
 ```
 ***2. Wyświetlić dla każdej kreatury nazwy zasobów jakie posiada.***
 ```sql
- SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k
+SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k
 inner join ekwipunek e on k.idKreatury=e.idKreatury
 inner join zasob z on e.idZasobu=z.idZasobu;
 ```
@@ -65,11 +67,13 @@ WHERE e.idZasobu IS NULL;
 ```sql
 left join + warunek z null
 
-SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury WHERE e.idKreatury IS NULL
+SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury
+WHERE e.idKreatury IS NULL
 
 podzapytanie
 
-SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
+SELECT nazwa, idKreatury FROM kreatura
+WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
 
 Natural Join - sam laczy (niewarto uzywac)
 ```
@@ -77,11 +81,17 @@ Natural Join - sam laczy (niewarto uzywac)
 # Zadanie 4
 ***1. Wyświetlić nazwy wikingów, którzy urodzili się w latach 70-tych XVII wieku oraz nazwy zasobów, które posiadaają (użyj natural joina jeśli się da)***
 ```sql
-SELECT k.nazwa, z.nazwa FROM kreatura k join ekwipunek e on k.idKreatury=e.idKreatury join zasob z on e.idZasobu=z.idZasobu WHERE year(dataUr) BETWEEN 1670 and 1680;
+SELECT k.nazwa, z.nazwa FROM kreatura k
+join ekwipunek e on k.idKreatury=e.idKreatury
+join zasob z on e.idZasobu=z.idZasobu
+WHERE year(dataUr) BETWEEN 1670 and 1680;
 ```
 ***2. Wyświetlić nazwy 5 najmłodszych kreatur, które w ekwipunku posiadają jedzenie.***
 ```sql
-SELECT k.nazwa, k.dataUr, z.rodzaj FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury INNER JOIN zasob z ON e.idZasobu=z.idZasobu. WHERE z.rodzaj = 'jedzenie' ORDER BY k.dataUr desc limit 5;
+SELECT k.nazwa, k.dataUr, z.rodzaj FROM kreatura k
+INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury
+INNER JOIN zasob z ON e.idZasobu=z.idZasobu.
+WHERE z.rodzaj = 'jedzenie' ORDER BY k.dataUr desc limit 5;
 ```
 ***3. Wypisz obok siebie nazwy kreatur, których numer idKreatury różni się o 5 (np. Bjorn - Astrid, Brutal - Ibra itd.)***
 ```sql
@@ -93,10 +103,14 @@ SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on
 # Zadanie 5
 ***1. Dla każdego rodzaju kreatury wyświetlić średnią wagę zasobów, jaką posiadają w ekwipunku, jeśli kreatura nie jest małpą ani wężem i ilość ekwipunku jest poniżej 30.***
 ```sql
-SELECT k.rodzaj, avg(e.ilosc * z.waga) FROM kreatura k inner join ekwipunek e on k.idKreatury=e.id.Kreatury inner join zasob z on e.idZasobu=z.idZasobu
+SELECT k.rodzaj, avg(e.ilosc * z.waga) FROM kreatura k
+inner join ekwipunek e on k.idKreatury=e.id.Kreatury
+inner join zasob z on e.idZasobu=z.idZasobu
 WHERE k.rodzaj not in ('malpa','waz') and e.ilosc < 30 group by k.rodzaj; 
 ```
 ***2. Dla każdego rodzaju kreatury wyświetlić nazwę, datę urodzenia i rodzaj najmłodszej i najstarszej kreatury.***
 ```sql
-SELECT k.rodzaj, k.nazwa, n.najstarsza, n.najmlodsza FROM (SELECT rodzaj, min(dataUr) najstarsza, max(dataUr) najmlodsza FROM kreatura group by rodzaj) n, kreatura k WHERE n.najstarsza = k.dataUr OR n.najmlodsza=k.dataUr; 
+SELECT k.rodzaj, k.nazwa, n.najstarsza, n.najmlodsza FROM (SELECT rodzaj, min(dataUr) najstarsza, max(dataUr) najmlodsza
+FROM kreatura group by rodzaj) n, kreatura k
+WHERE n.najstarsza = k.dataUr OR n.najmlodsza=k.dataUr; 
 ```

@@ -22,9 +22,7 @@ SELECT rodzaj, count(*), group_concat(nazwa SEPARATOR ' ') from kreatura group b
 ```
 ***2. Wypisz kolejne etaty wszystkich wypraw wraz z nazwami sektorów, sortując najpierw według daty początku wyprawy, a następnie według kolejności występowania etapów. W każdym etapie określ nazwę kierownika danej wyprawy.***
 ```sql
-select w.nazwa, w.data_rozpoczecia,
-e.kolejnosc, s.nazwa, k.nazwa
-from etapy e
+select w.nazwa, w.data_rozpoczecia, e.kolejnosc, s.nazwa, k.nazwa from etapy e
 inner join wyprawa w on e.id_wyprawy = w.id_wyprawy
 inner join sektor s on e.idSektora = s.id_sektora
 inner join kreatura k on w.kierownik = k.idKreatury

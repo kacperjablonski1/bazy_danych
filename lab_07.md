@@ -69,8 +69,7 @@ SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreat
 
 podzapytanie
 
-SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in
-(SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
+SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
 
 Natural Join - sam laczy (niewarto uzywac)
 ```

@@ -116,7 +116,7 @@ nazwij ja Marynarz - wrzuć do tej tabeli wszystkie postacie które maja zdefini
 
 CREATE TABLE marynarz LIKE postac; (nie kopiuje kluczy obcych)
 
-INSERT INTO  marynarz SELECT * FROM postac WHERE id_statku IS NOT NULL;
+INSERT INTO marynarz SELECT * FROM postac WHERE id_statku IS NOT NULL;
 
 2 sposób czyli przy stworzeniu tabeli aby odrazu dodal ale tu nie kopiuje klucza glownego i obcego.
 

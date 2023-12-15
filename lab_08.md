@@ -9,28 +9,28 @@ CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 ```
 ***2. Wypisz nazwy kreatur, które nie uczestniczyły w wyprawie.***
 ```sql
-SELECT k.nazwa FROM kreatura k left join uczestnicy u on k.idKreatury=u.id_uczestnika WHERE u.id_wyprawy IS NULL;
+SELECT k.nazwa FROM kreatura k LEFT JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika WHERE u.id_wyprawy IS NULL;
 ```
 ***3. Dla każdej wyprawy wypisać jej nazwę oraz sumę ilości ekwipunku, jaka została zabrana przez uczestników tej wyprawy.***
 ```sql
 SELECT max(w.nazwa),sum(e.ilosc) FROM wyprawa w
-inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy
-inner join kreatura k on u.id_uczestnika=k.idKreatury
-inner join ekwipunek e on k.idKreatury=e.idKreatury
-group by w.id_wyprawy;
+INNER JOIN uczestnicy u ON w.id_wyprawy=u.id_wyprawy
+INNER JOIN kreatura k ON u.id_uczestnika=k.idKreatury
+INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury
+GROUP BY w.id_wyprawy;
 ```
 # Zadanie 2
 ***1. Dla każdej wyprawy wypisz jej nazwę, liczbę uczestników, oraz tych uczestników w jednej linii.***
 ```sql
-SELECT rodzaj, count(*), group_concat(nazwa SEPARATOR ' ') from kreatura group by rodzaj;
+SELECT rodzaj, count(*), group_concat(nazwa SEPARATOR ' ') FROM kreatura GROUP BY rodzaj;
 ```
 ***2. Wypisz kolejne etaty wszystkich wypraw wraz z nazwami sektorów, sortując najpierw według daty początku wyprawy, a następnie według kolejności występowania etapów. W każdym etapie określ nazwę kierownika danej wyprawy.***
 ```sql
-select w.nazwa, w.data_rozpoczecia, e.kolejnosc, s.nazwa, k.nazwa from etapy e
-inner join wyprawa w on e.id_wyprawy = w.id_wyprawy
-inner join sektor s on e.idSektora = s.id_sektora
-inner join kreatura k on w.kierownik = k.idKreatury
-order by data_rozpoczecia, kolejnosc;
+SELECT w.nazwa, w.data_rozpoczecia, e.kolejnosc, s.nazwa, k.nazwa FROM etapy e
+INNER JOIN wyprawa w ON e.id_wyprawy = w.id_wyprawy
+INNER JOIN sektor s ON e.idSektora = s.id_sektora
+INNER JOIN kreatura k ON w.kierownik = k.idKreatury
+ORDER BY data_rozpoczecia, kolejnosc;
 ```
 # Zadanie 3
 ***1. Wypisać ile razy dany sektor był odwiedzany podczas wszystkich wypraw (nazwa sektora, ilośćc odwiedzin). Jeśli nie był odwiedzony ani razu, wypisz zero.***

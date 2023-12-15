@@ -94,7 +94,6 @@ SELECT DISTINCT rodzaj FROM zasob;
 ```sql
 SELECT concat(nazwa, ' to id=', idKreatury) FROM kreatura WHERE rodzaj LIKE 'wi%';
 
-SELECT nazwa, rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
 ```
 
 ***3. Wyświetl zasoby z całkowitą wagą danego zasobu (ilość * waga) dla zasobów pozyskanych w latach 2000-2007.***

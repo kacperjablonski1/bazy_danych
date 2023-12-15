@@ -41,7 +41,7 @@ ALTER TABLE postac ADD PRIMARY KEY (pesel);
 ```sql
 ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena');
 
-ALTER TABLE postac MODIFY  rodzaj enum('(Trzeba wszystko wypisac jeszcze raz + coś nowego)')
+ALTER TABLE postac MODIFY rodzaj enum('(Trzeba wszystko wypisac jeszcze raz + coś nowego)')
 ```
 
 ***c) Wstaw do tabeli syrene o nazwie Gertruda Nieszczera***
@@ -54,10 +54,11 @@ VALUES ('23423423423',5,'Gertruda Nieszczera', 'syrena', '2023-11-23',125);
 *DODATEK (WYSWIETLANIE)*
 
 ```sql
-# % - dowolny ciag znakow, _ - dokladnie jeden znak
+% - dowolny ciag znakow, _ - dokladnie jeden znak
+
 SELECT nazwa FROM postac WHERE nazwa like '_r%';
-select nazwa from postac WHERE nazwa like '__-__';
-select nazwa from postac where nazwa regexp '%a%';
+SELECT nazwa FROM postac WHERE nazwa like '__-__';
+SELECT nazwa FROM postac WHERE nazwa regexp '%a%';
 ```
 
 # Zadanie 3 
@@ -71,7 +72,9 @@ UPDATE postac SET statek = 'Czarna Perła' WHERE nazwa LIKE '%a%'
 ***b) Zmniejsz ladowność wszystkim statkom o 30%, których data wodowania była w XX wieku***
 
 ```sql
-Update statek set max_ladownosc = max_ladownosc * 0.7 where year(data_wodowania) between 1701 and 2001;
+UPDATE statek
+SET max_ladownosc = max_ladownosc * 0.7
+WHERE year(data_wodowania) BETWEEN 1701 AND 2001;
 ```
 
 *DODATEK (SORTOWANIE)*

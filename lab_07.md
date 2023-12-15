@@ -50,7 +50,7 @@ INNER JOIN - laczy tabelki
 ```
 ***2. Wyświetlić dla każdej kreatury nazwy zasobów jakie posiada.***
 ```sql
- SELECT k.nazwa, z.nazwa FROM kreatura k inner join ekwipunek e on k.idKreatury=e.idKreatury inner join zasob z on e.idZasobu=z.idZasobu;
+ SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k inner join ekwipunek e on k.idKreatury=e.idKreatury inner join zasob z on e.idZasobu=z.idZasobu;
 ```
 ***3. Wyświetlić kreatury, które nie posiadają żadnego ekwipunku.***
 ```sql

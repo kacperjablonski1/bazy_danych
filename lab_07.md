@@ -42,14 +42,11 @@ SELECT count(distinct nazwa) FROM zasob GROUP BY rodzaj HAVING min(ilosc) > 1;
 
 ***1. Wyświetlić dla każdej kreatury ilość zasobów jakie niesie.***
 ```sql
-SELECT * FROM kreatura, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury;
+select nazwa, idZasobu, ilosc from kreatura, ekwipunek where kreatura.idKreatury=ekwipunek.idKreatury;
+lub
+SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury;
 
-2 sposob
-
-SELECT * FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury = e.idKreatury;
-
-DODATEK (INNER JOIN - laczy tabelki)
-SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k INNER JOIN ekwipunek e ON k.idKreatury = e.idKreatury INNER JOIN zasob z ON e.idZasobu = z.idZasobu;
+INNER JOIN - laczy tabelki
 ```
 ***2. Wyświetlić dla każdej kreatury nazwy zasobów jakie posiada.***
 ```sql

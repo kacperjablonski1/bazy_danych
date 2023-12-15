@@ -50,11 +50,15 @@ INNER JOIN - laczy tabelki
 ```
 ***2. Wyświetlić dla każdej kreatury nazwy zasobów jakie posiada.***
 ```sql
- SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k inner join ekwipunek e on k.idKreatury=e.idKreatury inner join zasob z on e.idZasobu=z.idZasobu;
+ SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k
+inner join ekwipunek e on k.idKreatury=e.idKreatury
+inner join zasob z on e.idZasobu=z.idZasobu;
 ```
 ***3. Wyświetlić kreatury, które nie posiadają żadnego ekwipunku.***
 ```sql
-SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury WHERE e.idZasobu IS NULL;
+SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k
+LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury
+WHERE e.idZasobu IS NULL;
 ```
 
 *DODATEK*
@@ -65,7 +69,8 @@ SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreat
 
 podzapytanie
 
-SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
+SELECT nazwa, idKreatury FROM kreatura WHERE idKreatury not in
+(SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
 
 Natural Join - sam laczy (niewarto uzywac)
 ```

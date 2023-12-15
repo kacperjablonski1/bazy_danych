@@ -27,7 +27,7 @@ select count(distinct nazwa) FROM zasob;
 # Zadanie 2
 ***1. Dla każdego rodzaju zasobu wyświetlić sumę wag tego zasobu.***
 ```sql
- SELECT rodzaj,sum(waga) from zasob GROUP BY rodzaj;
+ SELECT rodzaj,sum(waga) FROM zasob GROUP BY rodzaj;
 ```
 ***2. Dla każdej nazwy zasobu wyświetlić średnią wagę, jeśli ilość jest równa co najmniej 4 oraz jeśli ta suma wag jest większa od 10.***
 ```sql
@@ -53,8 +53,8 @@ INNER JOIN - laczy tabelki
 ***2. Wyświetlić dla każdej kreatury nazwy zasobów jakie posiada.***
 ```sql
 SELECT k.nazwa, e.idZasobu, e.ilosc z.nazwa FROM kreatura k
-inner join ekwipunek e on k.idKreatury=e.idKreatury
-inner join zasob z on e.idZasobu=z.idZasobu;
+INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury
+INNER JOIN zasob z ON e.idZasobu=z.idZasobu;
 ```
 ***3. Wyświetlić kreatury, które nie posiadają żadnego ekwipunku.***
 ```sql
@@ -67,13 +67,14 @@ WHERE e.idZasobu IS NULL;
 ```sql
 left join + warunek z null
 
-SELECT k.nazwa FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury
+SELECT k.nazwa FROM kreatura k
+LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury
 WHERE e.idKreatury IS NULL
 
 podzapytanie
 
 SELECT nazwa, idKreatury FROM kreatura
-WHERE idKreatury not in (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
+WHERE idKreatury NOT IN (SELECT DISTINCT idKreatury FROM ekwipunek WHERE idKreatury IS NOT NULL);
 
 Natural Join - sam laczy (niewarto uzywac)
 ```
@@ -82,31 +83,31 @@ Natural Join - sam laczy (niewarto uzywac)
 ***1. Wyświetlić nazwy wikingów, którzy urodzili się w latach 70-tych XVII wieku oraz nazwy zasobów, które posiadaają (użyj natural joina jeśli się da)***
 ```sql
 SELECT k.nazwa, z.nazwa FROM kreatura k
-join ekwipunek e on k.idKreatury=e.idKreatury
-join zasob z on e.idZasobu=z.idZasobu
-WHERE year(dataUr) BETWEEN 1670 and 1680;
+JOIN ekwipunek e ON k.idKreatury=e.idKreatury
+JOIN zasob z ON e.idZasobu=z.idZasobu
+WHERE year(dataUr) BETWEEN 1670 AND 1680;
 ```
 ***2. Wyświetlić nazwy 5 najmłodszych kreatur, które w ekwipunku posiadają jedzenie.***
 ```sql
 SELECT k.nazwa, k.dataUr, z.rodzaj FROM kreatura k
 INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury
 INNER JOIN zasob z ON e.idZasobu=z.idZasobu.
-WHERE z.rodzaj = 'jedzenie' ORDER BY k.dataUr desc limit 5;
+WHERE z.rodzaj = 'jedzenie' ORDER BY k.dataUr DESC LIMIT 5;
 ```
 ***3. Wypisz obok siebie nazwy kreatur, których numer idKreatury różni się o 5 (np. Bjorn - Astrid, Brutal - Ibra itd.)***
 ```sql
-SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on abs(k1.kreatury-k2.kreatury) = 5;
+SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 INNER JOIN kreatura k2 ON abs(k1.kreatury-k2.kreatury) = 5;
 lub
-SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 inner join kreatura k2 on k1.kreatury-k2.kreatury = 5;
+SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 INNER JOIN kreatura k2 ON k1.kreatury-k2.kreatury = 5;
 ```
 
 # Zadanie 5
 ***1. Dla każdego rodzaju kreatury wyświetlić średnią wagę zasobów, jaką posiadają w ekwipunku, jeśli kreatura nie jest małpą ani wężem i ilość ekwipunku jest poniżej 30.***
 ```sql
 SELECT k.rodzaj, avg(e.ilosc * z.waga) FROM kreatura k
-inner join ekwipunek e on k.idKreatury=e.id.Kreatury
-inner join zasob z on e.idZasobu=z.idZasobu
-WHERE k.rodzaj not in ('malpa','waz') and e.ilosc < 30 group by k.rodzaj; 
+INNER JOIN ekwipunek e ON k.idKreatury=e.id.Kreatury
+INNER JOIN zasob z ON e.idZasobu=z.idZasobu
+WHERE k.rodzaj NOT IN ('malpa','waz') AND e.ilosc < 30 GROUP BY k.rodzaj; 
 ```
 ***2. Dla każdego rodzaju kreatury wyświetlić nazwę, datę urodzenia i rodzaj najmłodszej i najstarszej kreatury.***
 ```sql

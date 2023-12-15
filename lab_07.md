@@ -73,7 +73,7 @@ Natural Join - sam laczy (niewarto uzywac)
 # Zadanie 4
 ***1. Wyświetlić nazwy wikingów, którzy urodzili się w latach 70-tych XVII wieku oraz nazwy zasobów, które posiadaają (użyj natural joina jeśli się da)***
 ```sql
-SELECT k.nazwa, z.nazwa FROM kreatura k join ekwipunek e on k.idKreatury=e.idKreatury join zasob z on e.idZasobu=z.idZasobu WHERE k.rodzaj = 'wiking' AND year(dataUr) BETWEEN 1670 and 1680;
+SELECT k.nazwa, z.nazwa FROM kreatura k join ekwipunek e on k.idKreatury=e.idKreatury join zasob z on e.idZasobu=z.idZasobu WHERE year(dataUr) BETWEEN 1670 and 1680;
 ```
 ***2. Wyświetlić nazwy 5 najmłodszych kreatur, które w ekwipunku posiadają jedzenie.***
 ```sql

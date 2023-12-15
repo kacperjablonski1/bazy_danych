@@ -1,6 +1,6 @@
 # Zadanie 1
 
-1. Wyświetl średnią wagę wszystkich wikingów
+***1. Wyświetl średnią wagę wszystkich wikingów***
 ```sql
 SELECT sum(waga)/ sum(rodzaj = 'wiking') FROM kreatura  WHERE rodzaj = 'wiking';
 
@@ -9,8 +9,6 @@ SELECT avg(waga) FROM kreatura WHERE rodzaj = 'wiking'
 2. Wyświetl średnią wagę oraz liczbę kreatur dla każdego rodzaju
 ```sql
 SELECT avg(waga), count(rodzaj) FROM kreatura GROUP BY rodzaj;
-
-SELECT count(*) FROM kreatura GROUP BY rodzaj;
 ```
 3. Wyświetl średni wiek dla każdego rodzaju kreatury
 ```sql

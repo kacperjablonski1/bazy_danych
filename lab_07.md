@@ -54,7 +54,7 @@ INNER JOIN - laczy tabelki
 ```
 ***3. Wyświetlić kreatury, które nie posiadają żadnego ekwipunku.***
 ```sql
-SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury WHERE e.kreatury IS NULL;
+SELECT k.nazwa, e.idZasobu, e.ilosc FROM kreatura k LEFT JOIN ekwipunek e ON k.idKreatury = e.idKreatury WHERE e.idZasobu IS NULL;
 ```
 
 *DODATEK*

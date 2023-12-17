@@ -27,11 +27,14 @@ SELECT count(distinct nazwa) FROM zasob;
 # Zadanie 2
 ***1. Dla każdego rodzaju zasobu wyświetlić sumę wag tego zasobu.***
 ```sql
- SELECT rodzaj,sum(waga) FROM zasob GROUP BY rodzaj;
+ SELECT rodzaj,sum(waga*ilosc) FROM zasob GROUP BY rodzaj;
 ```
 ***2. Dla każdej nazwy zasobu wyświetlić średnią wagę, jeśli ilość jest równa co najmniej 4 oraz jeśli ta suma wag jest większa od 10.***
 ```sql
-SELECT sum(waga) FROM zasob WHERE ilosc > 4 GROUP BY rodzaj HAVING sum(waga) > 5;
+SELECT avg(waga) FROM zasob
+WHERE ilosc >= 4
+GROUP BY rodzaj HAVING sum(waga) > 10;
+
 najpierw odfiltrowanie pozniej agregowanie
 ```
 ***3. Wyświetlić ile jest różnych nazw dla każdego rodzaju zasobu, jeśli minimalna liczba zasobu jest większa od 1.***

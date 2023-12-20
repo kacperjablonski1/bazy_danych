@@ -108,7 +108,7 @@ SELECT concat(k1.nazwa, '-',k2.nazwa) FROM kreatura k1 INNER JOIN kreatura k2 ON
 ***1. Dla każdego rodzaju kreatury wyświetlić średnią wagę zasobów, jaką posiadają w ekwipunku, jeśli kreatura nie jest małpą ani wężem i ilość ekwipunku jest poniżej 30.***
 ```sql
 SELECT k.rodzaj, avg(e.ilosc * z.waga) FROM kreatura k
-INNER JOIN ekwipunek e ON k.idKreatury=e.id.Kreatury
+INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury
 INNER JOIN zasob z ON e.idZasobu=z.idZasobu
 WHERE k.rodzaj NOT IN ('malpa','waz') AND e.ilosc < 30 GROUP BY k.rodzaj; 
 ```

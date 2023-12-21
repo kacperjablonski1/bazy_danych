@@ -35,12 +35,17 @@ ORDER BY data_rozpoczecia, kolejnosc;
 # Zadanie 3
 ***1. Wypisać ile razy dany sektor był odwiedzany podczas wszystkich wypraw (nazwa sektora, ilośćc odwiedzin). Jeśli nie był odwiedzony ani razu, wypisz zero.***
 ```sql
+SELECT s.nazwa, ifnull(count(ew.sektor),0) FROM sektor s LEFT JOIN
+etapy_wyprawy ON s.id_sektora=ew.sektor;
 
+(nigdy nie osiagnie zero bo sql zwraca inta)
 ```
 ***2. W zależności od ilości wypraw, w jakich brała udział dana kreatura wypisz: nazwa kreatury,
 'brał udział w wyprawie' - gdy liczba > 0, 'nie brał udziału w wyprawie', gdy równa zero.***
 ```sql
-
+SELECT k.nazwa, if(count(u.id_uczestnika)>0,'brał udział w wyprawie','nie brał udziału w wyprawie') FROM uczestnicy u
+RIGHT JOIN kreatura k ON k.idKreatury=u.id_uczestnika
+GROUP BY k.nazwa;
 ```
 # Zadania 4
 ***1. Dla każdej wyprawy wypisz jej nazwę oraz sumę liczby znaków, które zostały użyte przy pisaniu dziennika, jeśli ta liczba znaków jest mniejsza od 400.***

@@ -50,11 +50,28 @@ GROUP BY k.nazwa;
 # Zadania 4
 ***1. Dla każdej wyprawy wypisz jej nazwę oraz sumę liczby znaków, które zostały użyte przy pisaniu dziennika, jeśli ta liczba znaków jest mniejsza od 400.***
 ```sql
+ SELECT w.nazwa, sum(length(ew.dziennik) FROM wyprawa w INNER JOIN etapy_wyprawy ew ON w.id_wyprawygroup=ew.idWyprawy
+ GROUP BY w.nazwa HAVING sum(lenght(ew.dziennik)) < 400;
 ```
 ***2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.***
 ```sql
+SELECT w.nazwa, u.id_uczestnika, count(id_uczestnika) ile_zle,
+count(distinct id_uczestnika) ile_dobrze,
+sum(e.ilosc*z.waga) suma_wagi,
+sum(ee.ilosc, z.waga FROM uczestnicy u
+INNER JOIN ekwipunek e on u.id_uczestnika=e.idKreatury
+INNER JOIN 
 ```
 # Zadanie 5
 ***1. Wypisać nazwę kreatury oraz ile miała dni (wiek w dniach) w momencie rozpoczęcia wyprawy, dla wypraw, które przechodziły przez chatkę dziadka.***
 ```sql
+SELECT datediff(now(), '2023-12-01');
+
+SELECT w.nazwa, k.nazwa, datediff(w.data_rozpoczecia, k.dataUr) AS wiek_w_dniach
+FORM kreatura k
+INNER JOIN uczestnicy u ON u.id_uczestnika=k.idKreatury 
+INNER JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy
+INNER JOIN etapy_wyprawy ew ON ew.idWyprawy=w.id_wyprawy; 
+WHERE ew.sektor = 7
+GROUP BY w.id_wyprawy, k.idKreatury;
 ```

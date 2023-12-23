@@ -50,7 +50,7 @@ GROUP BY k.nazwa;
 # Zadania 4
 ***1. Dla każdej wyprawy wypisz jej nazwę oraz sumę liczby znaków, które zostały użyte przy pisaniu dziennika, jeśli ta liczba znaków jest mniejsza od 400.***
 ```sql
- SELECT w.nazwa, sum(length(ew.dziennik) FROM wyprawa w INNER JOIN etapy_wyprawy ew ON w.id_wyprawygroup=ew.idWyprawy
+ SELECT w.nazwa, sum(lenght(ew.dziennik) FROM wyprawa w INNER JOIN etapy_wyprawy ew ON w.id_wyprawygroup=ew.idWyprawy
  GROUP BY w.nazwa HAVING sum(lenght(ew.dziennik)) < 400;
 ```
 ***2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.***

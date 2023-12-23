@@ -55,12 +55,17 @@ GROUP BY k.nazwa;
 ```
 ***2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.***
 ```sql
-SELECT w.nazwa, u.id_uczestnika, count(id_uczestnika) ile_zle,
+SELECT w.nazwa, u.id_uczestnika,
+count(id_uczestnika) ile_zle,
 count(distinct id_uczestnika) ile_dobrze,
 sum(e.ilosc*z.waga) suma_wagi,
-sum(ee.ilosc, z.waga FROM uczestnicy u
-INNER JOIN ekwipunek e on u.id_uczestnika=e.idKreatury
-INNER JOIN 
+sum(e.ilosc*z.waga) / count(distinct u.id_uczestnika avg_dobrze,
+sum(e.ilosc*z.waga) / count(u.id_uczestnika) avg_zle
+FROM uczestnicy u
+INNER JOIN ekwipunek e ON u.id_uczestnika=e.idKreatury
+INNER JOIN zasob z ON z.idZasobu=e.idZasobu
+INNER JOIN wyprawa w ON w.id_wyprawy=u.id_wyprawy
+GROUP BY w.id_wyprawy;
 ```
 # Zadanie 5
 ***1. Wypisać nazwę kreatury oraz ile miała dni (wiek w dniach) w momencie rozpoczęcia wyprawy, dla wypraw, które przechodziły przez chatkę dziadka.***

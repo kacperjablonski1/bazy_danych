@@ -55,7 +55,7 @@ GROUP BY k.nazwa;
 ```
 ***2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.***
 ```sql
-SELECT w.nazwa, u.id_uczestnika,
+SELECT w.nazwa, u.id_wyprawy,
 count(id_uczestnika) ile_zle,
 count(distinct id_uczestnika) ile_dobrze,
 sum(e.ilosc*z.waga) suma_wagi,

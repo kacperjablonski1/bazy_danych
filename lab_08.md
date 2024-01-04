@@ -40,8 +40,9 @@ ORDER BY data_rozpoczecia, kolejnosc;
 # Zadanie 3
 ***1. Wypisać ile razy dany sektor był odwiedzany podczas wszystkich wypraw (nazwa sektora, ilośćc odwiedzin). Jeśli nie był odwiedzony ani razu, wypisz zero.***
 ```sql
-SELECT s.nazwa, ifnull(count(ew.sektor),0) FROM sektor s LEFT JOIN
-etapy_wyprawy ON s.id_sektora=ew.sektor;
+SELECT s.nazwa, ifnull(count(ew.sektor),0) FROM sektor s
+LEFT JOIN etapy_wyprawy ew ON s.id_sektora=ew.sektor
+GROUP BY s.nazwa;
 
 (nigdy nie osiagnie zero bo sql zwraca inta)
 ```

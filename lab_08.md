@@ -22,6 +22,11 @@ GROUP BY w.id_wyprawy;
 # Zadanie 2
 ***1. Dla każdej wyprawy wypisz jej nazwę, liczbę uczestników, oraz tych uczestników w jednej linii.***
 ```sql
+SELECT w.nazwa,count(k.nazwa), group_concat(k.nazwa) FROM kreatura k
+INNER JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika
+INNER JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy
+GROUP BY w.nazwa;
+
 SELECT rodzaj, count(*), group_concat(nazwa SEPARATOR ' ') FROM kreatura GROUP BY rodzaj;
 ```
 ***2. Wypisz kolejne etaty wszystkich wypraw wraz z nazwami sektorów, sortując najpierw według daty początku wyprawy, a następnie według kolejności występowania etapów. W każdym etapie określ nazwę kierownika danej wyprawy.***

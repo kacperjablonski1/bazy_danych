@@ -14,12 +14,16 @@
 ```sql
 ```
 ***2. Napisz funkcję, która będzie pobierała tekst i zwracała go z wielkich liter***
+```sql
+```
 
 # Zadanie 4
 ***1. Stwórz tabele "system_alarmowy" z polami, id_alarmu, wiadomosc***
 ```sql
 ```
 ***2. Dodaj wyzwalacz, który będzie sprawdzał czy w tabeli wyprawy pojawiła się misja, w której bierze udział teściowa oraz czy jednym z sektorów misji jest domek dziadka. Jeżeli w/w zaistnieje wyzwalacz wstawi rekord do tabeli "system_alarmowy" z treścią "Teściowa nadchodzi !!!"***
+```sql
+```
 
 # Zadanie 5
 ***1. Napisz procedurę mającą jako parametry wyjściowe średnią, sumę i maks udźwigu z tabeli kreatura.***

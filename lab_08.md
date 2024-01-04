@@ -63,12 +63,7 @@ HAVING sum(length(ew.dziennik)) < 400;
 ```
 ***2. Dla każdej wyrawy podaj średnią wagę zasobów, jakie były niesione przez uczestników tej wyprawy.***
 ```sql
-SELECT w.nazwa, u.id_wyprawy,
-count(id_uczestnika) ile_zle,
-count(distinct id_uczestnika) ile_dobrze,
-sum(e.ilosc*z.waga) suma_wagi,
-sum(e.ilosc*z.waga) / count(distinct u.id_uczestnika avg_dobrze,
-sum(e.ilosc*z.waga) / count(u.id_uczestnika) avg_zle
+SELECT w.nazwa, sum(e.ilosc*z.waga) / count(distinct u.id_uczestnika) AS srednia_waga_zasobow 
 FROM uczestnicy u
 INNER JOIN ekwipunek e ON u.id_uczestnika=e.idKreatury
 INNER JOIN zasob z ON z.idZasobu=e.idZasobu

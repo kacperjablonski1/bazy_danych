@@ -22,15 +22,14 @@ OLD -> UPDATE, DELETE
 ***1. Stwórz tabelę archiwum_wypraw z polami id_wyprawy, nazwa, data_rozpoczecia, data_zakonczenia, kierwonik (varchar), do której będą wstawiane rekordy po usunięciu z tabeli wyprawa. Do kolumny kierwonik wstawiane jest nazwa kreatury na podstawie usuwanego id_kreatury***
 ```sql
 DELIMITER //
-CREATE TRIGGER (nazwa triggera)
-BEFORE INSERT ON kreatura
+CREATE TRIGGER wyprawa_before_delete
+BEFORE DELETE ON wyprawa
 FOR EACH ROW
 BEGIN
-INSERT INTO archiwum_wypraw
-SELECT w.id_wyprawy, w.nazwa, w.data_rozpoczecia, w.data_zakonczenia, k.nazwa FROM wyprawa w
-INNER JOIN kreatura k ON k.idKreatury=w.kierownik
-WHERE id_wyprawy=OLD.id_wyprawy;
-  END IF;
+  INSERT INTO archiwum_wypraw
+  SELECT w.id_wyprawy, w.nazwa, w.data_rozpoczecia, w.data_zakonczenia, k.nazwa FROM wyprawa w
+  INNER JOIN kreatura k ON k.idKreatury=w.kierownik
+  WHERE id_wyprawy=OLD.id_wyprawy;
 END
 //
 DELIMITER;

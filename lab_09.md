@@ -12,6 +12,7 @@ BEGIN
   END IF;
 END
 //
+DELIMITER;
 
 NEW -> INSERT, UPDATE
 OLD -> UPDATE, DELETE
@@ -20,8 +21,8 @@ OLD -> UPDATE, DELETE
 # Zadanie 2
 ***1. Stwórz tabelę archiwum_wypraw z polami id_wyprawy, nazwa, data_rozpoczecia, data_zakonczenia, kierwonik (varchar), do której będą wstawiane rekordy po usunięciu z tabeli wyprawa. Do kolumny kierwonik wstawiane jest nazwa kreatury na podstawie usuwanego id_kreatury***
 ```sql
+SELECT id_wyprawy, nazwa, data_rozpoczecia, data_zakonczenia, kierownik FROM wyprawa;
 ```
-
 # Zadanie 3
 ***1. Napisz procedurę o nazwie "eliksir_sily", która bedzie podnosiła wartość pola udzwig z tabeli kreatura o 20% na podstawie id_kreatury przekazywanego jako parametr.***
 ```sql

@@ -80,11 +80,10 @@ GROUP BY w.id_wyprawy;
 ```sql
 SELECT datediff(now(), '2023-12-01');
 
-SELECT w.nazwa, k.nazwa, datediff(w.data_rozpoczecia, k.dataUr) AS wiek_w_dniach
-FORM kreatura k
-INNER JOIN uczestnicy u ON u.id_uczestnika=k.idKreatury 
+SELECT w.nazwa, k.nazwa, datediff(w.data_rozpoczecia, k.dataUr) AS wiek_w_dniach FROM kreatura k
+INNER JOIN uczestnicy u ON u.id_uczestnika=k.idKreatury
 INNER JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy
-INNER JOIN etapy_wyprawy ew ON ew.idWyprawy=w.id_wyprawy; 
+INNER JOIN etapy_wyprawy ew ON ew.idWyprawy=w.id_wyprawy
 WHERE ew.sektor = 7
 GROUP BY w.id_wyprawy, k.idKreatury;
 ```

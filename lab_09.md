@@ -43,11 +43,18 @@ DROP TRIGGER nazwa;
 # Zadanie 3
 ***1. Napisz procedurę o nazwie "eliksir_sily", która bedzie podnosiła wartość pola udzwig z tabeli kreatura o 20% na podstawie id_kreatury przekazywanego jako parametr.***
 ```sql
+DELIMITER $$
+CREATE PROCEDURE premia(IN id int)
+BEGIN
+UPDATE pracownik SET pensja = 1.2 * pensja
+WHERE id_pracownika = id;
+END
+$$
+DELIMITER;
 ```
 ***2. Napisz funkcję, która będzie pobierała tekst i zwracała go z wielkich liter***
 ```sql
 ```
-
 # Zadanie 4
 ***1. Stwórz tabele "system_alarmowy" z polami, id_alarmu, wiadomosc***
 ```sql

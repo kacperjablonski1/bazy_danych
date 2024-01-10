@@ -21,6 +21,14 @@ OLD -> UPDATE, DELETE
 # Zadanie 2
 ***1. Stwórz tabelę archiwum_wypraw z polami id_wyprawy, nazwa, data_rozpoczecia, data_zakonczenia, kierwonik (varchar), do której będą wstawiane rekordy po usunięciu z tabeli wyprawa. Do kolumny kierwonik wstawiane jest nazwa kreatury na podstawie usuwanego id_kreatury***
 ```sql
+
+CREATE TABLE archiwum_wypraw(
+id_wyprawy int primary key auto_increment,
+nazwa varchar(55),
+data_rozpoczecia date,
+data_zakonczenia date,
+kierownik varchar(55));
+
 DELIMITER //
 CREATE TRIGGER wyprawa_before_delete
 BEFORE DELETE ON wyprawa
@@ -44,10 +52,11 @@ DROP TRIGGER nazwa;
 ***1. Napisz procedurę o nazwie "eliksir_sily", która bedzie podnosiła wartość pola udzwig z tabeli kreatura o 20% na podstawie id_kreatury przekazywanego jako parametr.***
 ```sql
 DELIMITER $$
-CREATE PROCEDURE premia(IN id int)
+CREATE PROCEDURE premia(in id int)
 BEGIN
-UPDATE pracownik SET pensja = 1.2 * pensja
-WHERE id_pracownika = id;
+  UPDATE kreatura
+  SET udzwig = 1.2 * udzwig
+  WHERE id_pracownika = id;
 END
 $$
 DELIMITER;

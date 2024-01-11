@@ -34,7 +34,7 @@ SELECT avg(pensja) FROM pracownik WHERE (2024 - year(data_zatrudnienia)) > 5;
 SELECT round(avg(pensja), 2) FROM pracownik
 WHERE data_zatrudnienia <= '2019-01-11';
 
-#lub
+lub
 
 SELECT round(avg(pensja), 2) FROM pracownik
 WHERE data_zatrudnienia <= 
@@ -54,7 +54,7 @@ GROUP BY z.id_zamowienia;
 ```
 #zad10
 ```sql
-SELECT pr.imie, pr.nazwisko, sum(pz.ilosc*pz.cena) as wartosc
+SELECT pr.imie, pr.nazwisko, sum(pz.ilosc*pz.cena) AS wartosc
 FROM zamowienie z INNER JOIN pozycja_zamowienia pz ON z.id_zamowienia=pz.zamowienie 
 INNER JOIN pracownik pr ON pr.id_pracownika=z.pracownik_id_pracownika 
 GROUP BY pr.id_pracownika ORDER BY wartosc DESC;
